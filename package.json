@@ -60,6 +60,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "flow-babel-webpack-plugin": "^1.1.1",
