@@ -1,0 +1,119 @@
+/* Estilos base */
+.edit-plague-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 515px;
+  max-width: 100%; /* Para hacerlo responsivo */
+  display: flex;
+  flex-direction: column;
+}
+
+
+.h4edit-plague {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.h5edit-plague {
+  text-align: right;
+  padding-bottom: 10px;
+  color: #c62426;
+  margin-right: 15px;
+}
+
+.label-dato-plague {
+  font-weight: bold;
+  margin-left: 12px;
+}
+
+.labels-plague-e {
+  font-size: 15px;
+  margin-left: 12px; 
+}
+
+.inputs-edit-plague,
+.textarea-plague-e, 
+.textarea-plague-e2 {
+  margin-top: 5px;
+  margin-left: 12px;
+  width: calc(100% - 25px); /* Ajuste para tener en cuenta el padding y margen */
+  padding: 10px;
+  border: 2px solid #d4d0d0;
+  border-radius: 8px;
+  resize: none;
+}
+
+.textarea-plague-e {
+  height: 150px;
+}
+
+.textarea-plague-e2 {
+  height: 80px;
+}
+
+.inputs-edit-plague:focus, 
+.textarea-plague-e:focus, 
+.textarea-plague-e2:focus {
+  border: 2px solid #c62426;
+  outline: none;
+}
+
+.form-sec-plague-edit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+
+.column-edit-plague {
+  flex: 1; /* Asigna el mismo espacio a cada columna */
+  margin-top: 10px;
+}
+
+.button-container-admin-pe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.button-plague-e {
+  width: 150px;
+  padding: 12px;
+  color: white;
+  background-color: #c62426;
+  border: 2px solid #c62426;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.red-label, .red-input {
+  color: #c62426;
+  border-color: #c62426;
+}
+
+.error-message-plague-e{
+  margin-top: 17px;
+  margin-left: 15px;
+  text-align: justify;
+  color: #c62426;
+  font-size: medium;
+}
+
+.plague-exists {
+  margin: 5px 20px;
+  text-align: justify;
+  color: #c62426;
+  font-size: 15px;
+  margin-left: 12px;
+}

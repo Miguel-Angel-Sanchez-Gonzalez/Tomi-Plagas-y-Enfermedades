@@ -1,0 +1,202 @@
+/* OTPInput.css */
+
+.otp-input-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  width: 450px;
+  height: 550px; /* Mismo tamaño que login-container */
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 2; /* Asegura que el componente esté frente al formulario de inicio de sesión */
+}
+
+
+.otp-input-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin-top: 20px; /* Ajustado margen superior */
+}
+
+.indicaciones{
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-bottom: 60px;
+}
+
+.container-inputs {
+  width: 40%; /* Cambiado al 100% para ocupar todo el ancho disponible */
+  height: auto;
+  padding: 40px 30px;
+  background-color: #c62426;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.otp-input-fields {
+  width: 100%; /* Ajustado el ancho del formulario al 60% */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputs-otp{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-evenly;
+}
+
+.inputs-otp input {
+  max-width: 40px; /* Ajustado el tamaño máximo */
+  height: 40px; /* Ajustado el alto */
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid #c62426; /* Color del borde */
+  background: #fff; /* Fondo blanco */
+  color: #000; /* Color del texto negro */
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0; /* Asegúrate de que el padding no esté causando problemas de visibilidad */
+}
+
+.inputs-otp input:focus {
+  outline: 3px solid #c62426;
+  transform: translateY(-5px);
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Distribuye los botones horizontalmente */
+  margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+}
+
+
+.button-container-otp {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-right: 35px;
+  margin-left: 35px;
+}
+
+.button-otp-verify {
+  margin-top: 50px;
+  width: 150px;
+  font-size: 18px;
+  font-weight: 800;
+  padding: 12px;
+  color: #c62426;
+  background-color: #fff;
+  border: 2px solid #c62426;
+  border-radius: 10px;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-otp-verify:hover {
+  transform: translateY(-5px); /* Mueve el botón hacia arriba */
+  box-shadow: 0 5px 15px rgba(214, 69, 12, 0.3); /* Agrega una sombra suave */
+}
+
+.button-otp {
+  margin-top: 20px;
+  width: 150px;
+  font-size: 18px;
+  padding: 12px;
+  color: white;
+  background-color: #c62426;
+  border: 2px solid #c62426;
+  border-radius: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.error-message {
+  margin-top: 20px; 
+  font-size: 18px; 
+  color: red; 
+  text-align: center;
+}
+
+.resend-info {
+  margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+  font-size: 14px; /* Ajusta el tamaño de la fuente según sea necesario */
+  color: #555; /* Color del mensaje de información */
+}
+
+/*ANIMACIÓN*/
+/* Estilos para el contenedor del spinner de carga */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+  backdrop-filter: blur(5px); /* Aplicar desenfoque al fondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Estilos para el spinner de carga */
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #333; /* Color del spinner */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite; /* Animación */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.resend-info {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: #c62426; /* Color rojo de base */
+  margin-top: 10px;
+  text-align: center; /* Alineación centrada */
+}
+
+.time-left {
+  font-size: 24px; /* Tamaño de fuente más grande */
+  color: #c62426; /* Color rojo de base */
+  margin-top: 5px;
+}
+
+/* Animación para el contador de tiempo */
+.time-left {
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}

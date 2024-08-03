@@ -1,0 +1,96 @@
+.table-workgreen-admin {
+  display: flex;
+  align-items: inherit; /* Esto alinea verticalmente los contenidos */
+}
+
+.left-content-workgreen {
+  padding-right: 10px;
+}
+
+.back-icon-workgreen {
+  margin-top: 10px;
+  cursor: pointer;
+  color: #c62426;
+}
+
+.right-content {
+  flex: 1; /* Esto hace que el contenido derecho ocupe todo el espacio disponible */
+}
+
+.h2green-workgreen{
+  color: #05073C;
+  width: 100%;
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+
+.name-greenworker{
+  color: #c62426;
+
+}
+
+.only-table-workgreen {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(165, 157, 157, 0.123);
+  width: 100%;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.title-and-search-workgreen {
+  display: flex;
+  justify-content: space-between; /* Distribuye los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+  margin-bottom: 10px; /* Ajusta el margen inferior */
+}
+
+.description-workgreen{
+  display: block;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.header-table-workgreen {
+  display: flex;
+  align-items: center;
+}
+
+.icon-workgreen {
+  margin-right: 10px;
+  color: #c62426;
+}
+
+.search-workgreen {
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  width: 150px;
+}
+
+
+.search-workgreen:focus {
+  border-color: #2f31758e;
+}
+
+.delete-icon-workgren{
+  margin-left: 15px;
+  cursor: pointer;
+  color: #c62426;
+}
+
+.no-workgreen-message {
+  text-align: center;
+  margin-top: 50px; 
+  margin-bottom: 50px; 
+}
+
+.buttonWorkgreen{
+  padding: 10px 15px;
+  color: white;
+  background-color: #c62426;
+  border: 2px solid #c62426;
+  border-radius: 10px;
+}

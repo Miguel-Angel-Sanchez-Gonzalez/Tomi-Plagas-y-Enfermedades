@@ -1,0 +1,88 @@
+.table-imagesA-admin {
+  display: flex;
+  align-items: inherit; /* Esto alinea verticalmente los contenidos */
+}
+
+.left-content-imageA {
+  padding-right: 10px;
+}
+
+.back-icon-imageA {
+  margin-top: 10px;
+  cursor: pointer;
+  color: #c62426;
+}
+
+.right-content {
+  margin-top: 20px;
+  flex: 1; /* Esto hace que el contenido derecho ocupe todo el espacio disponible */
+}
+
+.h2green-bed-imageA, 
+.h4farmer-bed-imageA{
+  color: #05073C;
+  width: 100%;
+  margin-left: 16px;
+  margin-bottom: 5px;
+}
+
+.only-table-imageA {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(165, 157, 157, 0.123);
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.title-and-search-imageA {
+  display: flex;
+  justify-content: space-between; /* Distribuye los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+  margin-bottom: 10px; /* Ajusta el margen inferior */
+}
+
+.description-imagesA{
+  display: block;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.header-table-imagesA {
+  display: flex;
+  align-items: center;
+}
+
+.icon-ImageA {
+  margin-right: 10px;
+  color: #c62426;
+}
+
+.search-ImageA {
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  width: 150px;
+}
+
+.search-ImageA:focus {
+  border-color: #2f31758e;
+}
+
+.image-uploader-w {
+  margin-left: 20px;
+  align-content: center;
+  border: 2px dashed #c62426;
+  border-radius: 8px;
+  height: auto;
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.image-uploader-containerw {
+  height: auto;
+  padding: 40px;
+  margin-top: 3%;
+}

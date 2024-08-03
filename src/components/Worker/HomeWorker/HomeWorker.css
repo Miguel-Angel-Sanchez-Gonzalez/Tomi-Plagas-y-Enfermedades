@@ -1,0 +1,54 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+  font-family: 'Montserrat';
+}
+
+.navbar-container-worker {
+  width: 100%;
+  padding: 10px 0;
+  background: #c62426;
+  color: white;
+}
+
+.dashboard-worker {
+  display: flex;
+  gap: 10px;
+  height: max-content;
+  width: 100%; /* Asegura que el dashboard no se extienda más allá del ancho del .worker */
+  overflow: auto; /* Añade desplazamiento si es necesario */
+}
+
+.table-container-worker {
+  width: 78%; /* Asegúrate de que la suma de este ancho y el de otros elementos no exceda el 100% */
+  /* overflow: auto; Permite desplazamiento si el contenido interno es muy ancho */
+  margin: 20px;
+}
+/* 
+.h2worker {
+margin-left: 15px;
+margin-bottom: 20px;
+}
+
+*/
+
+.rol-worker {
+  color: #c62426;
+} 
+
+.rol-worker2 {
+  color: #c62426;
+  font-size: 32px;
+}
+  
+.space-worker {
+margin-top: 10px;
+}
+
+.table-active {
+background-color: #EFF6FF;
+color: #c62426;
+}

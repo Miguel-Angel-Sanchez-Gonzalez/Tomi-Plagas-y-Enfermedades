@@ -1,0 +1,121 @@
+/* Estilos base */
+.register-disease-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 515px;
+  max-width: 100%; /* Para hacerlo responsivo */
+  display: flex;
+  flex-direction: column;
+}
+.centrar-disease {
+  padding: 5px;
+}
+
+.h4register-disease {
+  padding-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.h5register-disease {
+  text-align: right;
+  padding-bottom: 10px;
+  color: #c62426;
+  margin-right: 15px;
+}
+
+.label-dato-disease {
+  font-weight: bold;
+  margin-left: 12px;
+}
+
+.labels-disease-r {
+  font-size: 15px;
+  margin-left: 12px; 
+}
+
+.inputs-register-disease, 
+.textarea-disease-r, 
+.textarea-disease-r2 {
+  margin-top: 5px;
+  margin-left: 12px;
+  width: calc(100% - 25px); /* Ajuste para tener en cuenta el padding y margen */
+  padding: 10px;
+  border: 2px solid #d4d0d0;
+  border-radius: 8px;
+  resize: none;
+}
+
+.textarea-disease-r {
+  height: 150px;
+}
+
+.textarea-disease-r2 {
+  height: 80px;
+}
+
+.inputs-register-disease:focus, 
+.textarea-disease-r:focus, 
+.textarea-disease-r2:focus {
+  border: 2px solid #c62426;
+  outline: none;
+}
+
+.form-sec-disease-register {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+
+.column-register-disease {
+  flex: 1; /* Asigna el mismo espacio a cada columna */
+  margin-top: 10px;
+}
+
+.btn-cont-admin-dis-r {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 15px;
+  margin-right: 12px;
+  padding: 10px;
+}
+
+.button-disease-r {
+  width: 150px;
+  padding: 12px;
+  color: white;
+  background-color: #c62426;
+  border: 2px solid #c62426;
+  border-radius: 10px;
+}
+
+.red-label, .red-input {
+  color: #c62426;
+  border-color: #c62426;
+}
+
+.error-message-disease-r{
+  margin-top: 17px;
+  margin-left: 20px;
+  text-align: justify;
+  color: #c62426;
+  font-size: medium;
+}
+
+.disease-exists {
+  margin: 5px 20px;
+  text-align: justify;
+  color: #c62426;
+  font-size: 15px;
+  margin-left: 12px;
+}

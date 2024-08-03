@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Estilos base */
+.edit-farmer-container2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Hacerlo responsivo */
+  max-width: 505px;
+  display: flex;
+  flex-direction: column;
+}
+
+.centrar-farmer2 {
+  padding: 5px;
+}
+
+.h4edit-farmer2 {
+  padding-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.h5edit-farmer2 {
+  text-align: right;
+  padding-bottom: 10px;
+  color: #c62426;
+  margin-right: 15px;
+}
+
+.label-dato-farmer2 {
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.label-farmer-e2 {
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.inputs-edit-farmer2,
+.inputs-edit-farmer22 {
+  margin-top: 5px;
+  width: 90%; /* Ajusta el ancho a 80% como solicitado */
+  padding: 10px;
+  border: 2px solid #d4d0d0;
+  margin-left: 5px; /* Centra los inputs */
+}
+
+.inputs-edit-farmer2:focus,
+.inputs-edit-farmer22:focus {
+  border: 2px solid #c62426;
+}
+
+.form-sec-farmer-edit2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Distribuye los elementos horizontalmente */
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.column-edit-farmer2 {
+  flex: 1; /* Ocupa el espacio disponible */
+  margin-right: 10px; /* Espacio entre las columnas */
+  margin-top: 10px;
+}
+
+.password-rules-farmer-e2 {
+  display: block;
+  padding-top: 4px;
+  margin-left: 12px;
+}
+
+.button-container-admin2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.button-farmer2 {
+  width: 150px;
+  padding: 12px;
+  color: white;
+  background-color: #c62426;
+  border: 2px solid #c62426;
+  border-radius: 10px;
+  cursor: pointer; 
+}
+
+.error-message-farmer-e2,
+.email-exists-Fe2 {
+  margin-top: 18px;
+  margin-left: 15px;
+  text-align: left;
+  color: #c62426;
+  font-size: medium;
+}
+
+.red-label2,
+.red-input2 {
+  color: #c62426;
+  border-color: #c62426;
+}
+
+/*
+ANIMACION DE CARGA
+*/
+.loading-container2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-overlay2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.loading-spinner2 {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #333; /* Color del spinner */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite; /* Animación */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.label-farmer-change-password {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #324054;
+  cursor: pointer;
+  display: block;
+}
+
+.password-invite-text-farmer {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #6c757d;
+}
+
+/* Ajustes en las clases existentes si es necesario */
+.column-edit-farmer {
+  flex: 1 1 45%; /* Ya define 45% del ancho */
+  margin-bottom: 20px;
+}
+
+.btn-cont-farmer-e2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 25px;
+}

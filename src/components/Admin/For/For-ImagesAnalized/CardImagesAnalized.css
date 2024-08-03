@@ -1,0 +1,155 @@
+.projcard-container {
+    display: flex; /* Convertir el contenedor en un flex container */
+    justify-content: center; /* Distribuir los elementos en dos columnas */
+    
+    width: 100%; /* Ancho deseado del contenedor */
+  }
+  
+  .image-detail-container {
+    position: relative; /* Añadido para establecer un contexto de posición */
+    width: 100%; /* Ancho de cada tarjeta con espacio entre ellas */
+    height: auto;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    font-size: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 21px -12px rgba(0, 0, 0, .66);
+    transition: box-shadow 0.2s ease;
+    display: flex; /* Hacemos que sea un flex container */
+  }
+
+  .image-detail-container:last-child {
+    margin-right: 0; /* No agregar margen a la última tarjeta */
+  }
+  
+  .image-detail-container:hover {
+    box-shadow: 0 34px 32px -33px rgba(0, 0, 0, .18);
+  }
+  
+  .image-detail-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(-70deg, transparent 50%);
+    opacity: 0.07;
+    transition: opacity 0.2s ease; /* Agregamos una transición de opacidad */
+  }
+  
+  .image-detail-container:hover::before {
+    opacity: 0.5; /* Ajustamos la opacidad al hacer hover */
+  }
+  
+  .image-detail-container .image-container {
+    flex: 0 0 48%; /* Ancho deseado del contenedor de la imagen */
+    position: relative;
+    display: flex; /* Convertir el contenedor en un flex container */
+    justify-content: center; /* Alinear el contenido horizontalmente al centro */
+    align-items: center; /* Alinear el contenido verticalmente al centro */
+  }
+  
+  .image-detail-container .image-container img {
+    max-width: 100%; /* Limitar el ancho máximo de la imagen al 100% del contenedor */
+    max-height: 100%; /* Limitar la altura máxima de la imagen al 100% del contenedor */
+    vertical-align: middle; /* Alinear verticalmente la imagen */
+    transition: transform 0.2s ease;
+  }
+  
+  .image-detail-container:hover .image-container img {
+    transform: scale(1.05) rotate(1deg);
+  }
+  
+  .image-detail-container .details-container {
+    flex: 1;
+    padding: 20px;
+    margin-left: 30px;
+  }
+
+.title {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #c62426;
+}
+
+.nameDetected {
+    text-align: center;
+    color: #c62426;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  text-align: center;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center; /* vertical */
+  justify-content: left; 
+  margin-bottom: 10px;
+}
+
+.checkbox-container label {
+  margin-left: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.checkbox-images{
+  appearance: none;
+  width: 20px;
+  height: 25px;
+  background: white;
+  border-radius: 5px;
+  border: 2px solid #c62426;
+  cursor: pointer;
+}
+
+.checkbox-images[type="checkbox"]:checked {
+  background: #c62427a1;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+ .image-detail-container {
+    flex-direction: column;
+  }
+ .image-detail-container.image-container {
+    flex: 0 0 100%;
+  }
+ .image-detail-container.details-container {
+    margin-left: 0;
+  }
+}
+
+/* Medium screens (max-width: 992px) */
+@media (max-width: 992px) {
+ .image-detail-container {
+    flex-direction: row;
+  }
+ .image-detail-container.image-container {
+    flex: 0 0 30%;
+  }
+ .image-detail-container.details-container {
+    margin-left: 20px;
+  }
+}
+
+/* Large screens (min-width: 1200px) */
+@media (min-width: 1200px) {
+ .image-detail-container {
+    flex-direction: row;
+  }
+ .image-detail-container.image-container {
+    flex: 0 0 40%;
+  }
+ .image-detail-container.details-container {
+    margin-left: 30px;
+  }
+}

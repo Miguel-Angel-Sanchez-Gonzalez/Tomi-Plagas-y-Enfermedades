@@ -1,0 +1,158 @@
+/* Estilos base */
+.register-bed-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Hacerlo responsivo */
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.centrar-bed {
+  margin: 5px;
+}
+
+.h4register-bed {
+  padding-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.h5register-bed {
+  text-align: right;
+  padding-bottom: 10px;
+  color: #c62426;
+  margin-right: 25px;
+}
+
+.label-dato-bed {
+  font-weight: bold;
+  margin-left: 25px;
+}
+
+.label-bed-r {
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.inputs-register-bed{
+  margin-top: 5px;
+  width: 90%; /* Ajusta el ancho a 80% como solicitado */
+  padding: 10px;
+  border: 2px solid #d4d0d0;
+  margin-left: 5px;
+  margin-bottom: 20px;
+}
+
+.inputs-register-bed:focus {
+  border: 2px solid #c62426;
+}
+
+.form-sec-bed-register {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Distribuye los elementos horizontalmente */
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.column-register-bed {
+  flex: 1; /* Ocupa el espacio disponible */
+  margin-right: 10px; /* Espacio entre las columnas */
+  margin-top: 10px;
+}
+
+.password-rules-bed-r {
+  display: block;
+  padding-top: 4px;
+  margin-left: 15px;
+}
+
+.button-container-bed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: 25px;
+  margin-bottom: 20px;
+}
+
+.button-bed {
+  width: 150px;
+  padding: 12px;
+  color: white;
+  background-color: #c62426;
+  border: 2px solid #c62426;
+  border-radius: 10px;
+  cursor: pointer; /* Cambiado desde el selector de etiqueta */
+  margin-left: 25px;
+}
+
+.error-message-bed-r{
+  margin-top: 15px;
+  text-align: left;
+  color: #c62426;
+  font-size: medium;
+  margin-left: 25px;
+}
+
+.bed-exists-r {
+  margin-top: 5px;
+  margin-left: 5px;
+  text-align: left;
+  color: #c62426;
+  font-size: 15px;
+}
+
+.red-label,
+.red-input {
+  color: #c62426;
+  border-color: #c62426;
+}
+
+/*
+ANIMACION DE CARGA
+*/
+.loading-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #333; /* Color del spinner */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite; /* Animación */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

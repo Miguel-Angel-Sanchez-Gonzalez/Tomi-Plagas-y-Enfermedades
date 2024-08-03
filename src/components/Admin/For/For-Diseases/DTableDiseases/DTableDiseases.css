@@ -1,0 +1,75 @@
+.table-diseases-admin {
+  margin-top: 10px;
+  overflow-x: hidden;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.h2green-bed-diseases, 
+.h4farmer-bed-diseases {
+  color: #05073C;
+  width: 100%;
+  margin-left: 16px;
+  margin-bottom: 5px;
+}
+
+.container-adm-pla {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(165, 157, 157, 0.123);
+  margin-left: 10px;
+  width: calc(100% - 20px); /* Ajusta el ancho para evitar desbordamiento */
+  max-width: 100%; /* Evita que se corte horizontalmente */
+}
+
+.title-adm-search-diseases {
+  display: flex;
+  justify-content: space-between; /* Distribuye los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+  margin-bottom: 10px; /* Ajusta el margen inferior */
+}
+
+.description-diseases {
+  display: block;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.header-table-diseases-ad {
+  display: flex;
+  align-items: center;
+}
+
+.icon-diseases {
+  margin-right: 10px;
+  color: #c62426;
+}
+
+.search-diseases-adm {
+  padding: 11px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  width: 200px;
+}
+
+.search-diseases-adm:focus {
+  border-color: #c62426;
+}
+
+/* DTablediseasesW.css */
+
+.table-diseases-admin .rdt_TableRow {
+  min-height: 150px; /* Cambia este valor según el tamaño deseado */
+}
+
+.table-diseases-admin .rdt_TableCell,
+.table-diseases-admin .rdt_TableCell div[data-tag="allowRowEvents"] {
+  white-space: normal;
+  overflow: auto; /* Sale un scroll si el texto no cabe en la celda */
+  text-align: justify;
+  max-height: 100%;
+  text-overflow: initial; /* Elimina la truncación del texto */
+  word-wrap: break-word; /* Evita el desbordamiento del texto */
+}

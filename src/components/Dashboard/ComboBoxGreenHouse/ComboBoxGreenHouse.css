@@ -1,0 +1,91 @@
+.dropdown {
+  position: relative;
+  width: 85%;
+  margin-top: 10px;
+  font-size: 15px;
+  margin-left: 25px;
+}
+
+
+.dropdown-btn-greenhouse {
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 8px;
+  background-color: #fff;
+  border: 2px solid #d4d0d0;
+  border-radius: 5px;
+  color: #000000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 98%;
+  font-size: 14.5px;
+}
+
+.dropdown-btn-greenhouse:hover {
+  cursor: pointer;
+}
+
+.dropdown-content-greenhouse {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 1;
+  width: 98%;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.dropdown-content-greenhouse .dropdown-option-gren {
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dropdown-content-greenhouse .dropdown-option-gren:hover {
+  background-color: #ecaeaf;
+}
+
+.dropdown:hover .dropdown-content-greenhouse {
+  display: block;
+}
+
+.combobox-greenhouse {
+  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+  margin: 10px 0;
+}
+
+.combobox-greenhouse select {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23ccc" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px 16px;
+}
+
+.combobox-greenhouse select:focus {
+  outline: none;
+  border-color: #9FC5E8;
+  box-shadow: 0 0 5px rgba(205, 230, 255, 0.5);
+}
+
+.combobox-greenhouse option {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  background-color: #ffffff;
+}

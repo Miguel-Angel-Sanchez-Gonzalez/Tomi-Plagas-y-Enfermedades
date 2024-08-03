@@ -1,0 +1,122 @@
+/* Estilos base */
+.register-plague-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 515px;
+  max-width: 100%; /* Para hacerlo responsivo */
+  display: flex;
+  flex-direction: column;
+}
+
+.centrar-plague {
+  padding: 5px;
+}
+
+.h4register-plague {
+  padding-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.h5register-plague {
+  text-align: right;
+  padding-bottom: 10px;
+  color: #c62426;
+  margin-right: 15px;
+}
+
+.label-dato-plague {
+  font-weight: bold;
+  margin-left: 12px;
+}
+
+.labels-plague-r {
+  font-size: 15px;
+  margin-left: 12px; 
+}
+
+.inputs-register-plague,
+.textarea-plague-r, 
+.textarea-plague-r2 {
+  margin-top: 5px;
+  margin-left: 12px;
+  width: calc(100% - 25px); /* Ajuste para tener en cuenta el padding y margen */
+  padding: 10px;
+  border: 2px solid #d4d0d0;
+  border-radius: 8px;
+  resize: none;
+}
+
+.textarea-plague-r {
+  height: 150px;
+}
+
+.textarea-plague-r2 {
+  height: 80px;
+}
+
+.inputs-register-plague:focus, 
+.textarea-plague-r:focus, 
+.textarea-plague-r2:focus {
+  border: 2px solid #c62426;
+  outline: none;
+}
+
+.form-sec-plague-register {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+
+.column-register-plague {
+  flex: 1; /* Asigna el mismo espacio a cada columna */
+  margin-top: 10px;
+}
+
+.button-container-admin-fr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 10px;
+}
+
+.button-plague-r {
+  width: 150px;
+  padding: 12px;
+  color: white;
+  background-color: #c62426;
+  border: 2px solid #c62426;
+  border-radius: 10px;
+}
+
+.red-label, .red-input {
+  color: #c62426;
+  border-color: #c62426;
+}
+
+.error-message-plague-r{
+  margin-top: 17px;
+  margin-left: 15px;
+  text-align: justify;
+  color: #c62426;
+  font-size: medium;
+}
+
+.plague-exists {
+  margin: 5px 20px;
+  text-align: justify;
+  color: #c62426;
+  font-size: 15px;
+  margin-left: 12px;
+}

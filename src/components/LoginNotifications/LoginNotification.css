@@ -1,0 +1,35 @@
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #c62426; /* Cambia este color por el que desees */
+  color: #fff; /* Color del texto */
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  width: 80%; /* Ajusta el ancho de la notificación */
+  max-width: 400px; /* Ajusta el ancho máximo de la notificación */
+  display: flex;
+  flex-direction: column; /* Cambia la dirección del flex a columna */
+  align-items: center;
+  text-align: center; /* Centra el texto */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.notification p {
+  margin-bottom: 10px; /* Añade margen inferior al texto */
+  font-size: 16px;
+}
+
+.notification button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+

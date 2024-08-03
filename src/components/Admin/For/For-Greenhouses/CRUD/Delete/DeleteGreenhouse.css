@@ -1,0 +1,61 @@
+/* Estilos base */
+.delete-greenhouse-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 520px;
+  max-width: 100%; /* Para hacerlo responsivo */
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.container-delete-greenhouse{
+  text-align: center;
+
+}
+
+.h4-delete-greenhouse{
+  padding-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.button-container-greenhouse {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between; /* Distribuye el espacio entre los botones */
+  align-items: center; /* Centra verticalmente los botones */
+}
+
+.button-delete-greenhouse {
+  width: 120px;
+  padding: 12px;
+  color: white;
+  background-color: #c62426;
+  border: 2px solid #c62426;
+  border-radius: 10px;
+  margin-right: 150px;
+}
+
+.btn-delete-greenhouse-cancel {
+  width: 120px;
+  padding: 12px;
+  color: white;
+  background-color: #c62426;
+  border: 2px solid #c62426;
+  border-radius: 10px;
+  margin-right: 25px;
+}
+
+/* Estilos adicionales para el botón */
+button {
+  transform: scale(1, 1);
+  cursor: pointer;
+}

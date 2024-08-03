@@ -1,0 +1,92 @@
+.table-bed-admin {
+  display: flex;
+  align-items: inherit;
+  
+}
+
+.left-content-bed  {
+  padding-right: 10px;
+}
+
+.back-icon {
+  margin-top: 10px;
+  cursor: pointer;
+  color: #c62426;
+}
+
+.right-content {
+  margin-top: 20px;
+  flex: 1; /* Esto hace que el contenido derecho ocupe todo el espacio disponible */
+}
+
+.h2green-bed, 
+.h4farmer-bed{
+  color: #05073C;
+  width: 100%;
+  margin-left: 16px;
+  margin-bottom: 5px;
+}
+
+.only-table-bed {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(165, 157, 157, 0.123);
+  width: 100%;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.title-and-search-bed {
+  display: flex;
+  justify-content: space-between; /* Distribuye los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+  margin-bottom: 10px; /* Ajusta el margen inferior */
+}
+
+.description-bed{
+  display: block;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.header-table-bed {
+  display: flex;
+  align-items: center;
+}
+
+.icon-bed {
+  margin-right: 0px;
+  color: #c62426;
+}
+
+.search-bed {
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  width: 150px;
+}
+
+.search-bed:focus {
+  border-color: #c62426;
+}
+
+.buttonBed{
+  padding: 10px 15px;
+  color: white;
+  background-color: #c62426;
+  border: 2px solid #c62426;
+  border-radius: 10px;
+}
+
+.name-farmer,
+.name-bed{
+  color: #c62426;
+}
+
+.no-beds-message {
+  text-align: center;
+  margin-top: 50px; 
+  margin-bottom: 50px; 
+}

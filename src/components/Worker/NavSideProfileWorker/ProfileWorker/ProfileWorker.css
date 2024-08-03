@@ -1,0 +1,205 @@
+/* Estilos base */
+.edit-worker-container2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Hacerlo responsivo */
+  max-width: 505px;
+  display: flex;
+  flex-direction: column;
+}
+
+.centrar-worker2 {
+  padding: 5px;
+}
+
+.h4edit-worker2 {
+  padding-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.h5edit-worker2 {
+  text-align: right;
+  padding-bottom: 10px;
+  color: #c62426;
+  margin-right: 15px;
+}
+
+.label-dato-worker2 {
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.label-worker-e2 {
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.inputs-edit-worker2,
+.inputs-edit-worker22 {
+  margin-top: 5px;
+  width: 90%; /* Ajusta el ancho a 80% como solicitado */
+  padding: 10px;
+  border: 2px solid #d4d0d0;
+  margin-left: 5px; /* Centra los inputs */
+}
+
+.inputs-edit-worker32 {
+  margin-top: 5px;
+  margin-left: 0px;
+  width: 60%;
+  padding: 10px;
+  border: 2px solid #d4d0d0;
+}
+
+.inputs-edit-worker2:focus,
+.inputs-edit-worker22:focus,
+.inputs-edit-worker32 {
+  border: 2px solid #c62426;
+}
+
+.form-sec-worker-edit2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Distribuye los elementos horizontalmente */
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.column-edit-worker2 {
+  flex: 1; /* Ocupa el espacio disponible */
+  margin-right: 10px; /* Espacio entre las columnas */
+  margin-top: 10px;
+}
+
+.password-rules-worker-e2 {
+  display: block;
+  padding-top: 4px;
+  margin-bottom: 10px;
+  margin-left: 12px;
+}
+
+.btn-cont-admin-worker-e2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  margin-left: 15px;
+  margin-right: 25px;
+}
+
+.button-worker2 {
+  width: 150px;
+  padding: 12px;
+  color: white;
+  background-color: #c62426;
+  border: 2px solid #c62426;
+  border-radius: 10px;
+  cursor: pointer; /* Cambiado desde el selector de etiqueta */
+}
+
+.email-exists-e2 {
+  margin-top: 5px;
+  margin-left: 5px;
+  text-align: left;
+  color: #c62426;
+  font-size: 14px;
+}
+.error-message-worker-e2 {
+  margin-top: 17px;
+  margin-left: 18px;
+  text-align: left;
+  color: #c62426;
+}
+
+
+
+.error-password2 {
+  margin-top: 5px;
+  margin-left: 5px;
+  text-align: left;
+  color: #c62426;
+  font-size: 14px;
+}
+
+.red-label2,
+.red-input2 {
+  color: #c62426;
+  border-color: #c62426;
+}
+
+/*
+ANIMACION DE CARGA
+*/
+.loading-container2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-overlay2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.loading-spinner2 {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #333; /* Color del spinner */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite; /* Animación */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.label-worker-change-password {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #324054;
+  cursor: pointer;
+  display: block;
+}
+
+.password-invite-text-worker {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #6c757d;
+}
+
+/* Ajustes en las clases existentes si es necesario */
+.column-edit-worker2 {
+  flex: 1 1 45%; /* Ya define 45% del ancho */
+  margin-bottom: 20px;
+}
+
+.btn-cont-worker-e2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 25px;
+}

@@ -1,0 +1,236 @@
+/* Estilos para el contenedor principal del login */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://unicons.iconscout.com/release/v4.0.0/css/line.css');
+
+body, html {
+  margin: 0; /* Elimina el margen por defecto del body y el html */
+  padding: 0; /* Elimina el padding por defecto del body y el html */
+  height: 100%; /* Ajusta la altura al 100% de la ventana */
+}
+
+/* Estilos para el contenedor principal del login */
+.login-container {
+  position: relative; /* Cambiado a posición relativa */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw; 
+  background-color: #fff;
+}
+
+.login-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%; /* Cubre la mitad izquierda del contenedor */
+  height: 100%;
+  background-color: #c62426; /* Cambia este color por el que desees */
+}
+
+/* Estilos para el formulario de login */
+.login-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 550px;
+  width: 450px;
+}
+
+/* Estilos para las etiquetas de los inputs */
+.login-label {
+  font-family: 'Roboto', sans-serif;
+  display: block;
+  margin-bottom: 5px;
+  margin-top: 20px;
+  font-size: 22px;
+  margin-left: 20px;
+}
+
+.login-label1 {
+  font-size: 46px;
+  font-family: 'Roboto', sans-serif;
+  display: block;
+  margin-bottom: 20px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.login-label2{
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  display: block;
+  margin-top: 30px;
+}
+
+.login-abajo{
+  font-family: 'Roboto', sans-serif;
+  display: block;
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+  color: #c62426;
+  cursor: pointer;
+}
+
+.input-datos {
+  position: relative;
+  margin: 15px 0;
+}
+
+.input-datos input {
+  font-family: 'Roboto', sans-serif;
+  width: 85%;
+  height: 45px;
+  font-size: 20px;
+  margin-top: 40px;
+  margin-left: 20px;
+  border-radius: 6px;
+  padding: 0 35px 0 10px;
+  border: 2px solid #E5D8C8;
+  background: transparent;
+  color: #000000;
+  outline: none;
+  /* Asegura que el input esté en un nivel superior */
+  position: relative; /* Asegura que la posición sea relativa */
+}
+
+.input-datos label {
+  margin-top: 10px;
+  margin-left: 25px;
+  font-family: 'Roboto', sans-serif;
+  position: absolute;
+  top: 60%;
+  left: 3px;
+  transform: translateY(-48%); /* Corrige la posición del label */
+  color: black;
+  font-size: 20px;
+  pointer-events: none;
+  transition: .3s;
+  z-index: 0; /* Asegura que el label esté en un nivel inferior */
+}
+
+.input-datos input:focus {
+  border: 2px solid #c62426;
+}
+
+.input-datos input:focus ~ label,
+.input-datos input:valid ~ label {
+  top: -5px; /* Mueve el label hacia arriba */
+  margin-left: 1px;
+  font-size: 20px;
+  padding: 0 15px;
+  background: #fff;
+  transform: translateY(0%); /* Elimina la transformación vertical */
+}
+
+/* Añadir estilos para el icono del ojo */
+.input-datos i {
+  position: absolute;
+  top: 73%;
+  right: 52px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.2s linear;
+  z-index: 1;
+  padding: 8px 5px
+}
+
+.input-datos input:focus ~ i,
+.input-datos input:valid ~ i {
+  color: #c62426;
+}
+
+/* Estilos para el botón de login */
+.login-button {
+  margin-top: 55px;
+  margin-bottom: 20px;
+  width: 90%;
+  padding: 13px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #c62426;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.login-button:hover {
+  background-color: #c62426;
+  border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
+  box-shadow:
+   0 10px 15px -3px rgb(0, 0, 0/ 0.1),
+   0 4px 6px -4px rgb(0, 0, 0/ 0.1);
+}
+
+.img-fruit{
+  position: absolute;
+  top: 15%; /* Ajusta la posición vertical de la imagen */
+  left: 10%; /* Ajusta la posición horizontal de la imagen */
+  z-index: 0; /* Asegura que la imagen esté detrás del formulario */
+  width: 15vw; /* Ajusta el ancho de la imagen */
+  height: auto;
+}
+
+.img-women{
+  position: absolute;
+  bottom: 0%; /* Ajusta la posición vertical de la imagen */
+  right: 20%; /* Ajusta la posición horizontal de la imagen */
+  z-index: 0; /* Asegura que la imagen esté detrás del formulario */
+  width: 16vw; /* Ajusta el ancho de la imagen */
+  height: auto;
+}
+
+/*
+ANIMACION DE CARGA
+*/
+.loading-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #333; /* Color del spinner */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite; /* Animación */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorMessage{
+  margin-left: 15px;
+}
