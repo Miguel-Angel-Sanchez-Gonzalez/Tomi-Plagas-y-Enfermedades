@@ -53,7 +53,7 @@ const SidebarFarmer = () => {
           }`}
         >
           <FontAwesomeIcon icon={faBug} className="icon" />
-          Plaga
+          Plagas
         </Link>
         <Link
           to="/homeFarmer/enfermedades"
@@ -62,7 +62,7 @@ const SidebarFarmer = () => {
           }`}
         >
           <FontAwesomeIcon icon={faVirus} className="icon" />
-          Enfermedad
+          Enfermedades
         </Link>
       </div>
     </div>

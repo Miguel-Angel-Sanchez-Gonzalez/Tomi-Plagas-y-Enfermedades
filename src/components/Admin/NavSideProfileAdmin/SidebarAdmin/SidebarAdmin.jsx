@@ -53,7 +53,7 @@ const SidebarAdmin = () => {
           }`}
         >
           <FontAwesomeIcon icon={faBug} className="icon" />
-          Plaga
+          Plagas
         </Link>
         <Link
           to="/homeAdmin/enfermedades"
@@ -62,7 +62,7 @@ const SidebarAdmin = () => {
           }`}
         >
           <FontAwesomeIcon icon={faVirus} className="icon" />
-          Enfermedad
+          Enfermedades
         </Link>
       </div>
     </div>

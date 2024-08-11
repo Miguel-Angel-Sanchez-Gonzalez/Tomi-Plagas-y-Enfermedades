@@ -34,7 +34,7 @@ const SidebarWorker = () => {
           }`}
         >
           <FontAwesomeIcon icon={faBug} className="icon" />
-          Plaga
+          Plagas
         </Link>
         <Link
           to="/homeWorker/enfermedades"
@@ -43,7 +43,7 @@ const SidebarWorker = () => {
           }`}
         >
           <FontAwesomeIcon icon={faVirus} className="icon" />
-          Enfermedad
+          Enfermedades
         </Link>
       </div>
     </div>
