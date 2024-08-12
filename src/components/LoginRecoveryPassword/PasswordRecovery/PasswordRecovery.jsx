@@ -3,6 +3,7 @@ import './PasswordRecovery.css';
 import OTPInput from '../OTPInput/OTPInput';
 import LoginNotification from '../../LoginNotifications/LoginNotifications';
 import { toast } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const PasswordRecovery = ({ onClose }) => {
   const [email, setEmail] = useState('');
@@ -36,7 +37,7 @@ const PasswordRecovery = ({ onClose }) => {
         email: email 
       };
 
-      fetch('http://localhost:3000/login/check_email_existence', {
+      fetch(`${backendUrl}/login/check_email_existence`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -56,7 +57,7 @@ const PasswordRecovery = ({ onClose }) => {
               OTP: OTP
             };
 
-            fetch('http://localhost:3000/login/send_recovery_email', {
+            fetch(`${backendUrl}/login/send_recovery_email`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'

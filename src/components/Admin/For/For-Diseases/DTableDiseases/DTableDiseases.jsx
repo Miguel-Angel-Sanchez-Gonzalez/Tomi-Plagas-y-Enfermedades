@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import RegisterDisease from "../CRUD/Register/RegisterDisease";
 import EditDisease from "../CRUD/Edit/EditDisease";
 import DeleteDisease from "../CRUD/Delete/DeleteDisease";
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 /*Enfermedad*/
 
 const DTableDiseases = () => {
@@ -84,7 +84,7 @@ const DTableDiseases = () => {
     const getDiseases = async () => {
       try {
         setIsLoading(true); // Indicar que se están cargando las enfermedades
-        const response = await fetch(`http://localhost:3000/disease`);
+        const response = await fetch(`${backendUrl}/disease`);
         if (response.status === 200) {
           const data = await response.json();
           setDiseases(data);

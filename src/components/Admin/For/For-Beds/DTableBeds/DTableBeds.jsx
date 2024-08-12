@@ -13,6 +13,8 @@ import DataTable from "react-data-table-component";
 import RegisterBed from "../CRUD/Register/RegisterBed";
 import EditBed from "../CRUD/Edit/EditBed";
 import DeleteBed from "../CRUD/Delete/DeleteBed";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 
 const DTableBeds = () => {
   const [inputValue, setInputValue] = useState("");
@@ -82,7 +84,7 @@ const DTableBeds = () => {
       try {
         setIsLoading(true); // Indicar que se están cargando las camas
         const response = await fetch(
-          `http://localhost:3000/bed/greenhouse/${idGreenhouse}`
+          `${backendUrl}/bed/greenhouse/${idGreenhouse}`
         );
         if (response.status === 200) {
           const data = await response.json();

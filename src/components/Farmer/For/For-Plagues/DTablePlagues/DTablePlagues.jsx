@@ -4,6 +4,7 @@ import "./DTablePlagues.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const DTablePlagues = () => {
   const [inputValue, setInputValue] = useState("");
@@ -50,7 +51,7 @@ const DTablePlagues = () => {
   async function getPlagues() {
     try {
       setIsLoading(true); // Indicar que se están cargando las plagas
-      const response = await fetch(`http://localhost:3000/plague/`);
+      const response = await fetch(`${backendUrl}/plague/`);
       if (response.status === 200) {
         const data = await response.json();
         setPlagues(data);

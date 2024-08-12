@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import NotificationSwitch from "../NotificationSwitch/NotificationSwitch";
 import ChangeStatusNotify from "../ChangeStatusNotify/ChangeStatusNotify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const DTableNotifications = () => {
   const [inputValue, setInputValue] = useState("");
@@ -82,7 +83,7 @@ const DTableNotifications = () => {
     try {
       setIsLoaded(true);
       const response = await fetch(
-        `http://localhost:3000/worker/getnotifications/${idWorker}/${status}`
+        `${backendUrl}/worker/getnotifications/${idWorker}/${status}`
       );
       if (response.status === 200) {
         const data = await response.json();

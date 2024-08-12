@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import './AsignGreenhouse.css';
 import AddNotification from '../../../../../LoginNotifications/AddNotification';
 import ComboBoxGreenHouse from '../../../../../Dashboard/ComboBoxGreenHouse/ComboBoxGreenHouse';
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const AsignGreenhouse = ({ onCancelClick, idWorker, idFarmer, onUpdateGreenhouses }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,7 +16,7 @@ const AsignGreenhouse = ({ onCancelClick, idWorker, idFarmer, onUpdateGreenhouse
 
   const checkGreenhouseAssignment = async (idWorker, idGreenhouse) => {
     try {
-      const response = await fetch(`http://localhost:3000/worker/existsAsignGreenhouse/${idWorker}/${idGreenhouse}`);
+      const response = await fetch(`${backendUrl}/worker/existsAsignGreenhouse/${idWorker}/${idGreenhouse}`);
       const data = await response.json();
       return data.exists;
     } catch (error) {
@@ -55,7 +56,7 @@ const AsignGreenhouse = ({ onCancelClick, idWorker, idFarmer, onUpdateGreenhouse
         return;
       }
 
-      const response = await fetch(`http://localhost:3000/worker/asigngreenhouse/${idWorker}`, {
+      const response = await fetch(`${backendUrl}/worker/asigngreenhouse/${idWorker}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

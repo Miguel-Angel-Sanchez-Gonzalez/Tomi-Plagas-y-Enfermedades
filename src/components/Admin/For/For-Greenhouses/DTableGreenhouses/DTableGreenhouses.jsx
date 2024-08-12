@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import RegisterGreenhouse from "../CRUD/Register/RegisterGreenhouse";
 import EditGreenhouse from "../CRUD/Edit/EditGreenhouse";
 import DeleteGreenhouse from "../CRUD/Delete/DeleteGreenhouse";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const DTableGreenhouses = () => {
   const [inputValue, setInputValue] = useState("");
@@ -102,7 +103,7 @@ const DTableGreenhouses = () => {
   const getGreenhouses = async () => {
     try {
       setIsLoading(true); // Indicar que se están cargando los invernaderos
-      const response = await fetch(`http://localhost:3000/greenhouse/`);
+      const response = await fetch(`${backendUrl}/greenhouse/`);
       if (response.status === 200) {
         const data = await response.json();
         //se están cargando los datos
@@ -187,7 +188,7 @@ const DTableGreenhouses = () => {
 
   async function getFarmers() {
     try {
-        const response = await fetch(`http://localhost:3000/farmer/getNameFarmers`);
+        const response = await fetch(`${backendUrl}/farmer/getNameFarmers`);
         const data = await response.json();
         if (data.length === 0) {
           return false;

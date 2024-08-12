@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import RegisterPlague from "../CRUD/Register/RegisterPlague";
 import EditPlague from "../CRUD/Edit/EditPlague";
 import DeletePlague from "../CRUD/Delete/DeletePlague";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const DTablePlagues = () => {
   const [inputValue, setInputValue] = useState("");
@@ -84,7 +85,7 @@ const DTablePlagues = () => {
     const getPlagues = async () => {
       try {
         setIsLoading(true); // Indicar que se están cargando las plagas
-        const response = await fetch(`http://localhost:3000/plague/`);
+        const response = await fetch(`${backendUrl}/plague/`);
         if (response.status === 200) {
           const data = await response.json();
           setPlagues(data);

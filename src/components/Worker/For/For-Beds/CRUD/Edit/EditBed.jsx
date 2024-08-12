@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./EditBed.css";
 import AddNotification from "../../../../../LoginNotifications/AddNotification";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const EditBed = ({ onCancelClick, idGreenhouse, idBed }) => {
   const [records, setRecords] = useState("");
@@ -34,7 +35,7 @@ const EditBed = ({ onCancelClick, idGreenhouse, idBed }) => {
   useEffect(() => {
     const getGreenhouseById = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/bed/${idBed}`);
+        const response = await fetch(`${backendUrl}/bed/${idBed}`);
         if (!response.ok) {
           throw new Error("Error al obtener la cama seleccionada");
         }
@@ -76,7 +77,7 @@ const EditBed = ({ onCancelClick, idGreenhouse, idBed }) => {
   const updateBedData = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:3000/bed/${idBed}`, {
+      const response = await fetch(`${backendUrl}/bed/${idBed}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

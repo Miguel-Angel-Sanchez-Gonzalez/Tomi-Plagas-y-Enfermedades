@@ -19,6 +19,7 @@ import "./Dashboard.css";
 import ComboBoxGreenHouse from "./ComboBoxGreenHouse/ComboBoxGreenHouse";
 import { RiQuestionnaireFill } from "@remixicon/react";
 import GraphicSwitch from "../Dashboard/GraphicSwitch/GraphicSwitch";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 //FARMER
 const Dashboard = () => {
   const [chartData, setChartData] = useState([]);
@@ -42,7 +43,7 @@ const Dashboard = () => {
     const fetchGreenhouses = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/greenhouse/farmer/${idFarmer}`
+          `${backendUrl}/greenhouse/farmer/${idFarmer}`
         );
         if (!response.ok) {
           throw new Error("El agricultor aún no tiene invernaderos.");
@@ -88,7 +89,7 @@ const Dashboard = () => {
 
     // Fetch Obtiene numero de plagas
     fetch(
-      `http://localhost:3000/dashboard/getTotalPlaguesByIdGreenhouse/${selectedGreenhouseId}`
+      `${backendUrl}/dashboard/getTotalPlaguesByIdGreenhouse/${selectedGreenhouseId}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -100,7 +101,7 @@ const Dashboard = () => {
 
     // Fetch Obtiene numero de enfermedades
     fetch(
-      `http://localhost:3000/dashboard/getTotalDiseasesByIdGreenhouse/${selectedGreenhouseId}`
+      `${backendUrl}/dashboard/getTotalDiseasesByIdGreenhouse/${selectedGreenhouseId}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -112,7 +113,7 @@ const Dashboard = () => {
 
     // Fetch Obtiene el estado de las imágenes
     fetch(
-      `http://localhost:3000/dashboard/getTotalImagesAnalizedByStatus/${selectedGreenhouseId}`
+      `${backendUrl}/dashboard/getTotalImagesAnalizedByStatus/${selectedGreenhouseId}`
     )
       .then((response) => {
         if (!response.ok) {
@@ -139,7 +140,7 @@ const Dashboard = () => {
 
     // Fetch Obtiene el conteo de plagas
     fetch(
-      `http://localhost:3000/dashboard/getCountPlagues/${selectedGreenhouseId}`
+      `${backendUrl}/dashboard/getCountPlagues/${selectedGreenhouseId}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -161,7 +162,7 @@ const Dashboard = () => {
 
     // Fetch Obtiene el conteo de enfermedades
     fetch(
-      `http://localhost:3000/dashboard/getCountDiseases/${selectedGreenhouseId}`
+      `${backendUrl}/dashboard/getCountDiseases/${selectedGreenhouseId}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -188,7 +189,7 @@ const Dashboard = () => {
     };
 
     fetch(
-      `http://localhost:3000/dashboard/totalPlaguesDiseases/${selectedGreenhouseId}`
+      `${backendUrl}/dashboard/totalPlaguesDiseases/${selectedGreenhouseId}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -226,7 +227,7 @@ const Dashboard = () => {
     if (!date) {
       // Si la fecha es null, cargar el historial completo de detecciones
       fetch(
-        `http://localhost:3000/dashboard/totalPlaguesDiseases/${selectedGreenhouseId}`
+        `${backendUrl}/dashboard/totalPlaguesDiseases/${selectedGreenhouseId}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -263,7 +264,7 @@ const Dashboard = () => {
       console.log("Fecha formateada:", formattedDate);
 
       fetch(
-        `http://localhost:3000/dashboard/getTotalPlaguesDiseasesDetectedByDate/${selectedGreenhouseId}`,
+        `${backendUrl}/dashboard/getTotalPlaguesDiseasesDetectedByDate/${selectedGreenhouseId}`,
         {
           method: "POST",
           headers: {

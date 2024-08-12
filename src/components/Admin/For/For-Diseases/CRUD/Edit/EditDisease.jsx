@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./EditDisease.css";
 import AddNotification from "../../../../../LoginNotifications/AddNotification";
 import { toast } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const EditDisease = ({ onCancelClick, idDisease }) => {
   const [records, setRecords] = useState("");
@@ -42,7 +43,7 @@ const EditDisease = ({ onCancelClick, idDisease }) => {
 
   async function checkDiseaseExists(diseaseName) {
     const response = await fetch(
-      `http://localhost:3000/disease/checkExist/${diseaseName}`
+      `${backendUrl}/disease/checkExist/${diseaseName}`
     );
     const data = await response.json();
     return data.exists;
@@ -56,7 +57,7 @@ const EditDisease = ({ onCancelClick, idDisease }) => {
   const getDiseaseById = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/disease/${idDisease}`
+        `${backendUrl}/disease/${idDisease}`
       );
       if (response.status === 200) {
         const data = await response.json();
@@ -109,7 +110,7 @@ const EditDisease = ({ onCancelClick, idDisease }) => {
   const updateDiseaseData = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:3000/disease/${idDisease}`, {
+      const response = await fetch(`${backendUrl}/disease/${idDisease}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

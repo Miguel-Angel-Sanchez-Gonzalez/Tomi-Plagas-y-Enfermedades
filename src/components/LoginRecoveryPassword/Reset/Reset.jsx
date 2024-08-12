@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "./Reset.css";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Reset = ({ onClose, email }) => {
   const [password, setPassword] = useState('');
@@ -20,7 +21,7 @@ const Reset = ({ onClose, email }) => {
         newPassword: password
       };
 
-      fetch('http://localhost:3000/login/changePassword',{
+      fetch(`${backendUrl}/login/changePassword`,{
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'

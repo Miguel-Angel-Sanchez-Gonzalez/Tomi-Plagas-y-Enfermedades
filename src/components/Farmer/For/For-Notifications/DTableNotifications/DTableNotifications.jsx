@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import NotificationSwitch from "../../../../Worker/For/For-Notifications/NotificationSwitch/NotificationSwitch";
 import ChangeStatusNotify from "../../../../Worker/For/For-Notifications/ChangeStatusNotify/ChangeStatusNotify"; 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const DTableNotifications = () => {
   const [inputValue, setInputValue] = useState("");
@@ -81,7 +82,7 @@ const DTableNotifications = () => {
   async function getNotifications() {
     try {
       const response = await fetch(
-        `http://localhost:3000/farmer/getnotifications/${idFarmer}/${status}`
+        `${backendUrl}/farmer/getnotifications/${idFarmer}/${status}`
       );
       if (response.status === 200) {
         const data = await response.json();

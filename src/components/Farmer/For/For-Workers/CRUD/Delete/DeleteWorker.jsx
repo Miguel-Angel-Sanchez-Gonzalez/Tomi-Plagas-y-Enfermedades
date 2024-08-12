@@ -1,10 +1,11 @@
 import React from "react";
 import { toast } from "react-toastify";
 import "./DeleteWorker.css";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const DeleteWorker = ({ onCancelClick, idWorker }) => {
   const onConfirmClick = () => {
-    fetch(`http://localhost:3000/worker/${idWorker}`, {
+    fetch(`${backendUrl}/worker/${idWorker}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "./EditFarmer.css";
 import AddNotification from "../../../../../LoginNotifications/AddNotification";
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const EditFarmer = ({ onCancelClick, idFarmer }) => {
   const [records, setRecords] = useState("");
@@ -58,7 +58,7 @@ const EditFarmer = ({ onCancelClick, idFarmer }) => {
   const checkEmailExists = async (email) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/login/check_email_existence`,
+        `${backendUrl}/login/check_email_existence`,
         {
           method: "POST",
           headers: {
@@ -81,7 +81,7 @@ const EditFarmer = ({ onCancelClick, idFarmer }) => {
   const checkUserExists = async (userName) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/login/userNameExistence`,
+        `${backendUrl}/login/userNameExistence`,
         {
           method: "POST",
           headers: {
@@ -141,7 +141,7 @@ const EditFarmer = ({ onCancelClick, idFarmer }) => {
 
   const getFarmerById = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/farmer/${idFarmer}`);
+      const response = await fetch(`${backendUrl}/farmer/${idFarmer}`);
       if (response.status === 200) {
         const data = await response.json();
         console.log("Data del agricultor", data);
@@ -246,7 +246,7 @@ const EditFarmer = ({ onCancelClick, idFarmer }) => {
   const updateFarmerData = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:3000/admin/updateFarmer/${idFarmer}`, {
+      const response = await fetch(`${backendUrl}/admin/updateFarmer/${idFarmer}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

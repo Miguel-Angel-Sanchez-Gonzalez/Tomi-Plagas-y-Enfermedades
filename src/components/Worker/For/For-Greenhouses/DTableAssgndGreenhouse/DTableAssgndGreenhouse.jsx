@@ -4,6 +4,7 @@ import "./DTableAssgndGreenhouse.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faEye} from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const DTableAssgndGreenhouse = () => {
   const [inputValue, setInputValue] = useState("");
@@ -73,7 +74,7 @@ const DTableAssgndGreenhouse = () => {
     try {
       setIsLoading(true);
       const idWorker = localStorage.getItem("idWorker");
-      const response = await fetch(`http://localhost:3000/worker/getgreenhouses/${idWorker}`);
+      const response = await fetch(`${backendUrl}/worker/getgreenhouses/${idWorker}`);
   
       if (response.ok) {
         const data = await response.json();

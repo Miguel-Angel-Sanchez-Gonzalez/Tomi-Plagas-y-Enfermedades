@@ -8,7 +8,7 @@ import "./DTableWorkersF.css";
 import RegisterWorker from "../CRUD/Register/RegisterWorker";
 import EditWorker from "../CRUD/Edit/EditWorker";
 import DeleteWorker from "../CRUD/Delete/DeleteWorker";
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 /*Trabajadores*/
 //FARMER
 const DTableWorkersF = () => {
@@ -117,7 +117,7 @@ const DTableWorkersF = () => {
     try {
       setIsLoading(true); // Indicar que se están cargando los trabajadores
       const response = await fetch(
-        `http://localhost:3000/farmer/getworkers/${idFarmer}`);
+        `${backendUrl}/farmer/getworkers/${idFarmer}`);
       if (response.status === 200) {
         const data = await response.json();
         setWorkers(data);

@@ -4,6 +4,7 @@ import AddNotification from "../../../../../LoginNotifications/AddNotification";
 import GreenhouseType from "../../ComboBox/GreenhouseType";
 import ResponsibleFarmerAndWorker from "../../../For-Workers/ComboBox/ResponsibleFarmerAndWorker";
 import { toast } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
   const [records, setRecords] = useState("");
@@ -58,7 +59,7 @@ const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
     const getGreenhouseById = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/greenhouse/${idGreenhouse}`
+          `${backendUrl}/greenhouse/${idGreenhouse}`
         );
         if (!response.ok) {
           throw new Error("Error al obtener el invernadero");
@@ -74,7 +75,7 @@ const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
         setidAgricultorResponsable(data[0].id_agricultor);
 
         const farmerResponse = await fetch(
-          `http://localhost:3000/farmer/${data[0].id_agricultor}`
+          `${backendUrl}/farmer/${data[0].id_agricultor}`
         );
         if (!farmerResponse.ok) {
           throw new Error("Error al obtener el agricultor responsable");
@@ -98,7 +99,7 @@ const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
   async function checkGreenhouseExists(greenhouseName) {
     try {
       const response = await fetch(
-        `http://localhost:3000/greenhouse/checkExist/${greenhouseName}`
+        `${backendUrl}/greenhouse/checkExist/${greenhouseName}`
       );
       const data = await response.json();
       return data.exists;
@@ -160,7 +161,7 @@ const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
   const updateGreenhouseData = async() => {
     setIsLoading(true);
     try{
-      const response = await fetch(`http://localhost:3000/greenhouse/${idGreenhouse}`, {
+      const response = await fetch(`${backendUrl}/greenhouse/${idGreenhouse}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

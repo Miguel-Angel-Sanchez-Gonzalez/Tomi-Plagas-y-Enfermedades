@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { UserContext } from "../../../../UserContext";
 import "./ProfileAdmin.css";
 import UpdatePasswordA from "../UpdatePasswordA/UpdatePasswordA";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const ProfileAdmin = ({ onCancelClick }) => {
   const { user, updateUser } = useContext(UserContext);
@@ -56,7 +57,7 @@ const ProfileAdmin = ({ onCancelClick }) => {
   const checkEmailExists = async (email) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/login/check_email_existence`,
+        `${backendUrl}/login/check_email_existence`,
         {
           method: "POST",
           headers: {
@@ -83,7 +84,7 @@ const ProfileAdmin = ({ onCancelClick }) => {
   const checkUserExists = async (userName) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/login/userNameExistence`,
+        `${backendUrl}/login/userNameExistence`,
         {
           method: "POST",
           headers: {
@@ -140,7 +141,7 @@ const ProfileAdmin = ({ onCancelClick }) => {
 
   const getDataAdmin = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/admin/`);
+      const response = await fetch(`${backendUrl}/admin/`);
       if (response.status === 200) {
         const data = await response.json();
         console.log(data[0]);
@@ -253,7 +254,7 @@ const ProfileAdmin = ({ onCancelClick }) => {
     };
 
     try {
-      const response = await fetch(`http://localhost:3000/admin/`, {
+      const response = await fetch(`${backendUrl}/admin/`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

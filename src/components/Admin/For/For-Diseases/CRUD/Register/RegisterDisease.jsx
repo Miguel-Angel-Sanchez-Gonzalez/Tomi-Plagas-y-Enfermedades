@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './RegisterDisease.css';
 import AddNotification from '../../../../../LoginNotifications/AddNotification';
 import { toast } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const RegisterDisease = ({ onCancelClick }) => {
   const [records, setRecords] = useState('');
@@ -47,7 +48,7 @@ const RegisterDisease = ({ onCancelClick }) => {
 
   /*FUNCIONES*/
   async function checkDiseaseExists(diseaseName){
-      const response = await fetch(`http://localhost:3000/disease/checkExist/${diseaseName}`)
+      const response = await fetch(`${backendUrl}/disease/checkExist/${diseaseName}`)
       const data = await response.json()
       //se están cargando los datos
       return data.exists;
@@ -85,7 +86,7 @@ const RegisterDisease = ({ onCancelClick }) => {
         //Se esta haciendo la promesa
         //Post para insertar datos de enfermedad
         try{
-          const response = await fetch('http://localhost:3000/disease/', {
+          const response = await fetch(`${backendUrl}/disease/`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

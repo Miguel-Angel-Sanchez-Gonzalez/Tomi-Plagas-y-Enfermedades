@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './ResponsibleFarmerAndWorker.css';
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 function ResponsibleFarmerAndWorker({ idFarmer, setIdFarmer, isFormSubmitted, value, onFarmerSelected, isEditing }) {
     const [isActive, setIsActive] = useState(false);
@@ -10,7 +11,7 @@ function ResponsibleFarmerAndWorker({ idFarmer, setIdFarmer, isFormSubmitted, va
     }, []);
 
     async function getFarmers() {
-        const response = await fetch(`http://localhost:3000/farmer/getNameFarmers`);
+        const response = await fetch(`${backendUrl}/farmer/getNameFarmers`);
         const data = await response.json();
         setOptions(data.map(farmer => ({
             label: farmer.nombre,

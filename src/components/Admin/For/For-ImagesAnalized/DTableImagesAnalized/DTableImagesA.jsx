@@ -6,6 +6,7 @@ import { faSearch, faEye } from "@fortawesome/free-solid-svg-icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import { toast } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const DTableImagesA = () => {
   const [inputValue, setInputValue] = useState("");
@@ -82,7 +83,7 @@ const DTableImagesA = () => {
       try {
         setIsLoading(true); // Indicar que se están cargando las imágenes
         const response = await fetch(
-          `http://localhost:3000/analizedImage/greenhouse/bed/${idBed}`
+          `${backendUrl}/analizedImage/greenhouse/bed/${idBed}`
         );
         if (response.status === 200) {
           const data = await response.json();
@@ -126,7 +127,7 @@ const DTableImagesA = () => {
       console.log(formData);
       setIsAnalyzing(true);
       const response = await fetch(
-        `http://localhost:3000/analyzeimage/web/${idBed}`,
+        `${backendUrl}/analyzeimage/web/${idBed}`,
         {
           method: "POST",
           body: formData,

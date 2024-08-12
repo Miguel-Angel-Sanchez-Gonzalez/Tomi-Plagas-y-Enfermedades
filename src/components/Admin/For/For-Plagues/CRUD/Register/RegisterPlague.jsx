@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './RegisterPlague.css';
 import AddNotification from '../../../../../LoginNotifications/AddNotification';
 import { toast } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const RegisterPlague = ({ onCancelClick }) => {
   const [records, setRecords] = useState('');
@@ -47,7 +48,7 @@ const RegisterPlague = ({ onCancelClick }) => {
 
   /*VER SI LA PLAGA EXISTE*/
   async function checkPlagueExists(plagueName){
-    const response = await fetch(`http://localhost:3000/plague/checkExist/${plagueName}`);
+    const response = await fetch(`${backendUrl}/plague/checkExist/${plagueName}`);
     const data = await response.json();
     return data.exists;
   }
@@ -79,7 +80,7 @@ const RegisterPlague = ({ onCancelClick }) => {
     };
   
     try {
-      const response = await fetch('http://localhost:3000/plague/', {
+      const response = await fetch(`${backendUrl}/plague/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

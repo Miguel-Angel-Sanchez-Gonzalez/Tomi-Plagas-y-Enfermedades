@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./CardImagesAnalized.css";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 //FARMER
 function CardImagesAnalized() {
   const location = useLocation();
@@ -25,7 +26,7 @@ function CardImagesAnalized() {
     const getRAndAByIdAnalizedImage = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/analizedImage/solutions/${idAnalizedImage}`
+          `${backendUrl}/analizedImage/solutions/${idAnalizedImage}`
         );
 
         if (response.status === 200) {
@@ -33,7 +34,7 @@ function CardImagesAnalized() {
           setData(data);
 
           const responseImage = await fetch(
-            `http://localhost:3000/analizedImage/greenhouse/bed/${idBed}`
+            `${backendUrl}/analizedImage/greenhouse/bed/${idBed}`
           );
           if (responseImage.status === 200) {
             const fImage = await responseImage.json();
@@ -88,7 +89,7 @@ function CardImagesAnalized() {
   }, [idAnalizedImage, idBed]);
 
   const updateStatus = (newStatus) => {
-    fetch(`http://localhost:3000/analizedImage/${idAnalizedImage}`, {
+    fetch(`${backendUrl}/analizedImage/${idAnalizedImage}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

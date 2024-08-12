@@ -1,12 +1,13 @@
 import React from "react";
 import { toast } from "react-toastify";
 import "./DeletePlague.css";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const DeletePlague = ({ onCancelClick, idPlague }) => {
 
   const onConfirmClick  = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/plague/${idPlague}`, {
+      const response = await fetch(`${backendUrl}/plague/${idPlague}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

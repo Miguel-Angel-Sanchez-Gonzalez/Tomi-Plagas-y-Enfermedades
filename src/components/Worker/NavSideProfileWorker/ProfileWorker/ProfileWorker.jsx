@@ -4,6 +4,7 @@ import "./ProfileWorker.css";
 // import AddNotification from "../../../../../LoginNotifications/AddNotification";
 import { UserContext } from "../../../../UserContext";
 import UpdatePassword from "../UpdatePassword/UpdatePassword";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const ProfileWorker = ({ onCancelClick, idWorker }) => {
   const { user, updateUser } = useContext(UserContext);
@@ -62,7 +63,7 @@ const ProfileWorker = ({ onCancelClick, idWorker }) => {
   //VALIDACIONES
   const checkEmailExists = async (email) => {
     const response = await fetch(
-      `http://localhost:3000/login/check_email_existence`,
+      `${backendUrl}/login/check_email_existence`,
       {
         method: "POST",
         headers: {
@@ -78,7 +79,7 @@ const ProfileWorker = ({ onCancelClick, idWorker }) => {
   const checkUserExists = async (userName) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/login/userNameExistence`,
+        `${backendUrl}/login/userNameExistence`,
         {
           method: "POST",
           headers: {
@@ -137,7 +138,7 @@ const ProfileWorker = ({ onCancelClick, idWorker }) => {
 
   const getWorkerById = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/worker/${idWorker}`);
+      const response = await fetch(`${backendUrl}/worker/${idWorker}`);
       if (response.status === 200) {
         const data = await response.json();
         console.log("Data del trabajador ", data);
@@ -154,7 +155,7 @@ const ProfileWorker = ({ onCancelClick, idWorker }) => {
         });
         setIdFarmer(data.id_agricultor);
         const responseAgricultorResponsable = await fetch(
-          `http://localhost:3000/farmer/${data.id_agricultor}`
+          `${backendUrl}/farmer/${data.id_agricultor}`
         );
         if (responseAgricultorResponsable.status === 200) {
           const dataResponseAgricultorResponsable =
@@ -248,7 +249,7 @@ const ProfileWorker = ({ onCancelClick, idWorker }) => {
   const updateWorkerData = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:3000/worker/${idWorker}`, {
+      const response = await fetch(`${backendUrl}/worker/${idWorker}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

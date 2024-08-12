@@ -1,12 +1,12 @@
 import React from 'react';
 import { toast } from "react-toastify";
 import './DeleteWorkerGreen.css';
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 const DeleteWorkerGreen = ({ onCancelClick, idWorkerGreenhouse, onUpdateGreenhouses }) => {
 
   const onConfirmClick = async () => {
     try{
-    const response = await fetch(`http://localhost:3000/worker/deleteAsignGreenhouse/${idWorkerGreenhouse}`, {
+    const response = await fetch(`${backendUrl}/worker/deleteAsignGreenhouse/${idWorkerGreenhouse}`, {
       method: "DELETE",
         headers: {
           "Content-Type": "application/json",

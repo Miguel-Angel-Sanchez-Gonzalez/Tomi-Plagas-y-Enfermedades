@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./EditPlague.css";
 import AddNotification from "../../../../../LoginNotifications/AddNotification";
 import { toast } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const EditPlague = ({ onCancelClick, idPlague }) => {
   const [records, setRecords] = useState("");
@@ -42,7 +43,7 @@ const EditPlague = ({ onCancelClick, idPlague }) => {
 
   async function checkPlagueExists(plagueName) {
     const response = await fetch(
-      `http://localhost:3000/plague/checkExist/${plagueName}`
+      `${backendUrl}/plague/checkExist/${plagueName}`
     );
     const data = await response.json();
     return data.exists;
@@ -55,7 +56,7 @@ const EditPlague = ({ onCancelClick, idPlague }) => {
 
   const getPlagueById = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/plague/${idPlague}`);
+      const response = await fetch(`${backendUrl}/plague/${idPlague}`);
       if (response.status === 200) {
         const data = await response.json();
         console.log(data);
@@ -109,7 +110,7 @@ const EditPlague = ({ onCancelClick, idPlague }) => {
   const updatePlagueData = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:3000/plague/${idPlague}`, {
+      const response = await fetch(`${backendUrl}/plague/${idPlague}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

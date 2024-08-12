@@ -12,6 +12,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import RegisterBed from "../CRUD/Register/RegisterBed";
 import EditBed from "../CRUD/Edit/EditBed";
 import DeleteBed from "../CRUD/Delete/DeleteBed";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 //FARMER
 const DTableBeds = ({ isLoading, noBedsMessage }) => {
   const location = useLocation();
@@ -83,9 +84,9 @@ const DTableBeds = ({ isLoading, noBedsMessage }) => {
   const getBedByIdGreenhouse = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/bed/greenhouse/${idGreenhouse}`
+        `${backendUrl}/bed/greenhouse/${idGreenhouse}`
       );
-      console.log(`http://localhost:3000/bed/greenhouse/${idGreenhouse}`);
+      console.log(`${backendUrl}/bed/greenhouse/${idGreenhouse}`);
       if (response.status === 200) {
         const data = await response.json();
         setBeds(data);

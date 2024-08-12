@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { toast } from "react-toastify";
 import './CardImagesAnalized.css';
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 function CardImagesAnalized() {
   const location = useLocation();
@@ -24,13 +25,13 @@ function CardImagesAnalized() {
   useEffect(() => {
     const getRAndAByIdAnalizedImage = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/analizedImage/solutions/${idAnalizedImage}`);
+        const response = await fetch(`${backendUrl}/analizedImage/solutions/${idAnalizedImage}`);
 
         if (response.status === 200) {
           const data = await response.json();
           setData(data);
 
-          const responseImage = await fetch(`http://localhost:3000/analizedImage/greenhouse/bed/${idBed}`);
+          const responseImage = await fetch(`${backendUrl}/analizedImage/greenhouse/bed/${idBed}`);
           if (responseImage.status === 200) {
             const fImage = await responseImage.json();
             const image = fImage.find(img => img.id_analizedImage === idAnalizedImage)?.image;
@@ -71,7 +72,7 @@ function CardImagesAnalized() {
   }, [idAnalizedImage, idBed]);
 
   const updateStatus = (newStatus) => {
-    fetch(`http://localhost:3000/analizedImage/${idAnalizedImage}`, {
+    fetch(`${backendUrl}/analizedImage/${idAnalizedImage}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

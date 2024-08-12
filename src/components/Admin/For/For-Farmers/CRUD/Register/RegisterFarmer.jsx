@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./RegisterFarmer.css";
 import AddNotification from "../../../../../LoginNotifications/AddNotification";
 import { toast } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const RegisterFarmer = ({ onCancelClick }) => {
   const [records, setRecords] = useState("");
@@ -54,7 +55,7 @@ const RegisterFarmer = ({ onCancelClick }) => {
   const checkEmailExists = async (email) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/login/check_email_existence`,
+        `${backendUrl}/login/check_email_existence`,
         {
           method: "POST",
           headers: {
@@ -77,7 +78,7 @@ const RegisterFarmer = ({ onCancelClick }) => {
   const checkUserExists = async (userName) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/login/userNameExistence`,
+        `${backendUrl}/login/userNameExistence`,
         {
           method: "POST",
           headers: {
@@ -189,7 +190,7 @@ const RegisterFarmer = ({ onCancelClick }) => {
 
       //Se esta haciendo la promesa
       //Post para insertar los datos de un agricultor
-      const response = await fetch("http://localhost:3000/farmer/", {
+      const response = await fetch(`${backendUrl}/farmer/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

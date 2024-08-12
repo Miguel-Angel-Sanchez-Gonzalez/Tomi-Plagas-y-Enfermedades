@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ComboBoxGreenHouse.css";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const ComboBoxGreenHouse = ({ onChange }) => {
   const [greenhouses, setGreenhouses] = useState([]);
@@ -11,7 +12,7 @@ const ComboBoxGreenHouse = ({ onChange }) => {
   useEffect(() => {
     const fetchGreenhouses = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/greenhouse/farmer/${idFarmer}`);
+        const response = await fetch(`${backendUrl}/greenhouse/farmer/${idFarmer}`);
         if (!response.ok) {
           throw new Error('El agricultor aún no tiene invernaderos.');
         }

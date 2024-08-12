@@ -3,6 +3,7 @@ import './RegisterWorker.css';
 import AddNotification from '../../../../../LoginNotifications/AddNotification';
 import ResponsibleFarmerAndWorker from '../../ComboBox/ResponsibleFarmerAndWorker';
 import { toast } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const RegisterWorker = ({ onCancelClick }) => {
   const [records, setRecords] = useState('');
@@ -55,7 +56,7 @@ const RegisterWorker = ({ onCancelClick }) => {
   
   const checkEmailExists = async (email) => {
     try {
-      const response = await fetch(`http://localhost:3000/login/check_email_existence`, {
+      const response = await fetch(`${backendUrl}/login/check_email_existence`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +75,7 @@ const RegisterWorker = ({ onCancelClick }) => {
   const checkUserExists = async (userName) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/login/userNameExistence`,
+        `${backendUrl}/login/userNameExistence`,
         {
           method: "POST",
           headers: {
@@ -192,7 +193,7 @@ const RegisterWorker = ({ onCancelClick }) => {
     //Se esta haciendo la promesa
     //Post para insertar los datos de un agricultor
     try {
-      const response = await fetch(`http://localhost:3000/worker/${idFarmer}`, {
+      const response = await fetch(`${backendUrl}/worker/${idFarmer}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

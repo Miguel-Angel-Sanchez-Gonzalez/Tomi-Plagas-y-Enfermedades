@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./DTableBedsW.css";
 import DataTable from "react-data-table-component";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const DTableBedsW = () => {
   const [inputValue, setInputValue] = useState("");
@@ -62,7 +63,7 @@ const DTableBedsW = () => {
     const getBedByIdGreenhouse = async () => {
       try {
         setIsLoading(true); // Indicar que se están cargando las camas
-        const response = await fetch(`http://localhost:3000/bed/greenhouse/${idGreenhouse}`);
+        const response = await fetch(`${backendUrl}/bed/greenhouse/${idGreenhouse}`);
         if (response.status === 200) {
           const data = await response.json();
           setBeds(data);

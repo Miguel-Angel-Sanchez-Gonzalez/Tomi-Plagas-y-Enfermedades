@@ -3,6 +3,7 @@ import './EditGreenhouse.css';
 import AddNotification from '../../../../../LoginNotifications/AddNotification';
 import GreenhouseType from '../../ComboBox/GreenhouseType';
 import ResponsibleFarmerAndWorker from '../../../For-Workers/ComboBox/ResponsibleFarmerAndWorker';
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
   const [records, setRecords] = useState('');
@@ -60,7 +61,7 @@ const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
   useEffect(() => {
     const getGreenhouseById = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/greenhouse/${idGreenhouse}`);
+        const response = await fetch(`${backendUrl}/greenhouse/${idGreenhouse}`);
         if (!response.ok) {
           throw new Error('Error al obtener el invernadero');
         }
@@ -74,7 +75,7 @@ const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
         });
         setidAgricultorResponsable(data[0].id_agricultor);
         
-        const farmerResponse = await fetch(`http://localhost:3000/farmer/${data[0].id_agricultor}`);
+        const farmerResponse = await fetch(`${backendUrl}/farmer/${data[0].id_agricultor}`);
         if (!farmerResponse.ok) {
           throw new Error('Error al obtener el agricultor responsable');
         }
@@ -97,7 +98,7 @@ const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
   /*FUNCIONES*/
   async function checkGreenhouseExists(greenhouseName){
     try {
-      const response = await fetch(`http://localhost:3000/greenhouse/checkExist/${greenhouseName}`);
+      const response = await fetch(`${backendUrl}/greenhouse/checkExist/${greenhouseName}`);
       const data = await response.json();
       return data.exists;
     } catch (error) {
@@ -147,7 +148,7 @@ const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
   };
 
   const updateGreenhouseData = () => {
-    fetch(`http://localhost:3000/greenhouse/${idGreenhouse}`, {
+    fetch(`${backendUrl}/greenhouse/${idGreenhouse}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'

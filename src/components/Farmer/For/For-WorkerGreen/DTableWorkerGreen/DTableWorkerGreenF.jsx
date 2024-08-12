@@ -7,6 +7,7 @@ import { faSearch, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import AsignGreenhouse from "../AsignedDelete/Asign/AsignGreenhouse";
 import DeleteWorkerGreen from "../AsignedDelete/Delete/DeleteWorkerGreen";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 //FARMER
 const DTableWorkerGreenF = ({ isLoading, noGreenworkerMessage }) => {
   const [inputValue, setInputValue] = useState("");
@@ -80,7 +81,7 @@ const DTableWorkerGreenF = ({ isLoading, noGreenworkerMessage }) => {
   const getGreenhouseByIdWorker = async (idWorker) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/worker/getgreenhouses/${idWorker}`
+        `${backendUrl}/worker/getgreenhouses/${idWorker}`
       );
       if (response.status === 200) {
         const data = await response.json();
@@ -133,7 +134,7 @@ const DTableWorkerGreenF = ({ isLoading, noGreenworkerMessage }) => {
 
   async function getGreenhouses() {
     try {
-        const response = await fetch('http://localhost:3000/greenhouse');
+        const response = await fetch(`${backendUrl}/greenhouse`);
         const data = await response.json();
         if (data.length === 0) {
           return false;

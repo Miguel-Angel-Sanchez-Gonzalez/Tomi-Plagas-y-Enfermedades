@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import LoginNotification from "../LoginNotifications/LoginNotifications";
 import PasswordRecovery from "../LoginRecoveryPassword/PasswordRecovery/PasswordRecovery";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -26,7 +27,7 @@ const Login = () => {
       role: localStorage.getItem("userRole"),
     };
 
-    fetch("http://localhost:3000/login/getDataByUsername", {
+    fetch(`${backendUrl}/login/getDataByUsername`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +76,7 @@ const Login = () => {
 
     const response = fetch(``);
 
-    fetch("http://localhost:3000/login", {
+    fetch(`${backendUrl}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

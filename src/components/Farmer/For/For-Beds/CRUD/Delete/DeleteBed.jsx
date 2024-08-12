@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import "./DeleteBed.css";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 
 const DeleteGreenhouse = ({ onCancelClick, idBed }) => {
   const onConfirmClick = () => {
-    fetch(`http://localhost:3000/bed/${idBed}`, {
+    fetch(`${backendUrl}/bed/${idBed}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

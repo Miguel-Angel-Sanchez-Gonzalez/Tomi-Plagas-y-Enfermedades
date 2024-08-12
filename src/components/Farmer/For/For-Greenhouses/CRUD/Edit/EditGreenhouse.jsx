@@ -3,6 +3,7 @@ import "./EditGreenhouse.css";
 import AddNotification from "../../../../../LoginNotifications/AddNotification";
 import GreenhouseType from "../../ComboBox/GreenhouseType";
 import { toast } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
   const [records, setRecords] = useState("");
@@ -50,7 +51,7 @@ const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
     const getGreenhouseById = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/greenhouse/${idGreenhouse}`
+          `${backendUrl}/greenhouse/${idGreenhouse}`
         );
         if (!response.ok) {
           throw new Error("Error al obtener el invernadero");
@@ -78,7 +79,7 @@ const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
   async function checkGreenhouseExists(greenhouseName) {
     try {
       const response = await fetch(
-        `http://localhost:3000/greenhouse/checkExist/${greenhouseName}`
+        `${backendUrl}/greenhouse/checkExist/${greenhouseName}`
       );
       const data = await response.json();
       return data.exists;
@@ -135,7 +136,7 @@ const EditGreenhouse = ({ onCancelClick, idGreenhouse }) => {
   };
 
   const updateGreenhouseData = () => {
-    fetch(`http://localhost:3000/greenhouse/${idGreenhouse}`, {
+    fetch(`${backendUrl}/greenhouse/${idGreenhouse}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

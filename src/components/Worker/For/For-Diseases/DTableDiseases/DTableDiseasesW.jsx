@@ -4,6 +4,7 @@ import "./DTableDiseasesW.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const DTableDiseasesW = () => {
   const [inputValue, setInputValue] = useState("");
@@ -53,7 +54,7 @@ const DTableDiseasesW = () => {
     const getDiseases = async () => {
       try {
         setIsLoading(true); // Indicar que se están cargando las enfermedades
-        const response = await fetch(`http://localhost:3000/disease/`);
+        const response = await fetch(`${backendUrl}/disease/`);
         if (response.status === 200) {
           const data = await response.json();
           setDiseases(data);

@@ -3,6 +3,7 @@ import axios from "axios";
 import "./OTPInput.css";
 import Reset from "../Reset/Reset";
 import LoginNotification from "../../LoginNotifications/LoginNotifications";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const OTPInput = ({ onClose, generatedOTP, email, otpGenerationTime }) => {
   const [otpGenerated, setOTPGenerated] = useState(String(generatedOTP).trim());
@@ -99,7 +100,7 @@ const OTPInput = ({ onClose, generatedOTP, email, otpGenerationTime }) => {
     };
 
     axios
-      .post("http://localhost:3000/login/send_recovery_email", data)
+      .post(`${backendUrl}/login/send_recovery_email`, data)
       .then(() => {
         setIsLoading(false);
         setAlertMessage("El código de recuperación se envió correctamente");

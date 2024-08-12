@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./RegisterBed.css";
 import AddNotification from "../../../../../LoginNotifications/AddNotification";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const RegisterBed = ({ onCancelClick, idGreenhouse }) => {
   const [records, setRecords] = useState("");
@@ -55,7 +56,7 @@ const RegisterBed = ({ onCancelClick, idGreenhouse }) => {
 
     //Se esta haciendo la promesa
     //Post para insertar los datos de un invernadero
-    const response = await fetch("http://localhost:3000/bed/", {
+    const response = await fetch(`${backendUrl}/bed/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

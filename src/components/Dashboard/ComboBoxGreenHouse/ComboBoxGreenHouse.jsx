@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ComboBoxGreenHouse.css';
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const ComboBoxGreenHouse = ({ onChange }) => {
   const [greenhouses, setGreenhouses] = useState([]);
@@ -8,7 +9,7 @@ const ComboBoxGreenHouse = ({ onChange }) => {
 
   useEffect(() => {
     // Fetch data from the endpoint
-    fetch('http://localhost:3000/greenhouse')
+    fetch(`${backendUrl}/greenhouse`)
       .then(response => response.json())
       .then(data => {
         setGreenhouses(data);

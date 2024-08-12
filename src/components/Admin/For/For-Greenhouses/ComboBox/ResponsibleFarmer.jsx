@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './ResponsibleFarmer.css';
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 function ResponsibleFarmer({ selected, setSelected, isFormSubmitted }) {
     const [isActive, setIsActive] = useState(false);
@@ -11,7 +12,7 @@ function ResponsibleFarmer({ selected, setSelected, isFormSubmitted }) {
 
     /*FUNCIONES*/
     async function getFarmers(){
-        const response = await fetch(`http://localhost:3000/farmer/getNameFarmers`)
+        const response = await fetch(`${backendUrl}/farmer/getNameFarmers`)
         const data = await response.json()
         setOptions(data.map(farmer => {
             return {label: farmer.nombre, value:farmer.id_agricultor}

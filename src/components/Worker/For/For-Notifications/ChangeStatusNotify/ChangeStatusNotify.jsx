@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 import "./ChangeStatusNotify.css";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const ChangeStatusNotify = ({ onCancelClick, notification }) => {
   const handleChangeStatus = async () => {
@@ -8,7 +9,7 @@ const ChangeStatusNotify = ({ onCancelClick, notification }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/analizedImage/${notification.id_imagenanalizada}`,
+        `${backendUrl}/analizedImage/${notification.id_imagenanalizada}`,
         {
           method: "PATCH",
           headers: {

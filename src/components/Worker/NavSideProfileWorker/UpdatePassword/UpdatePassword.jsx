@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./UpdatePassword.css";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const UpdatePassword = ({ onCancel, onPasswordUpdate, idWorker }) => {
   const [oldPassword, setOldPassword] = useState("");
@@ -49,7 +50,7 @@ const UpdatePassword = ({ onCancel, onPasswordUpdate, idWorker }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/worker/changepassword/${idWorker}`,
+        `${backendUrl}/worker/changepassword/${idWorker}`,
         {
           method: "PATCH",
           headers: {

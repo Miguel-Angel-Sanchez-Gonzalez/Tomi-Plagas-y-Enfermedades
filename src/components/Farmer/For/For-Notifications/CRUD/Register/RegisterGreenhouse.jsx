@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./RegisterGreenhouse.css";
 import AddNotification from "../../../../../LoginNotifications/AddNotification";
 import GreenhouseType from "../../ComboBox/GreenhouseType";
-
 import { useNavigate } from "react-router-dom";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const RegisterGreenhouse = ({ onCancelClick }) => {
   const [records, setRecords] = useState("");
@@ -62,7 +62,7 @@ const RegisterGreenhouse = ({ onCancelClick }) => {
   async function checkGreenhouseExists(greenhouseName) {
     try {
       const response = await fetch(
-        `http://localhost:3000/greenhouse/checkExist/${greenhouseName}`
+        `${backendUrl}/greenhouse/checkExist/${greenhouseName}`
       );
       const data = await response.json();
       return data.exists;
@@ -104,7 +104,7 @@ const RegisterGreenhouse = ({ onCancelClick }) => {
         size: values.tamanio,
       };
 
-      const response = await fetch("http://localhost:3000/greenhouse/", {
+      const response = await fetch(`${backendUrl}/greenhouse/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

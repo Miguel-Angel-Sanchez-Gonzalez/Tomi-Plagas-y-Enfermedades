@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import RegisterFarmer from "../CRUD/Register/RegisterFarmer";
 import EditFarmer from "../CRUD/Edit/EditFarmer";
 import DeleteFarmer from "../CRUD/Delete/DeleteFarmer";
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 /*Agricultores*/
 
 const DTableFarmers = () => {
@@ -99,7 +99,7 @@ const DTableFarmers = () => {
   const getFarmers = async () => {
     try {
       setIsLoading(true); // Indicar que se están cargando los agricultores
-      const response = await fetch(`http://localhost:3000/farmer/`);
+      const response = await fetch(`${backendUrl}/farmer/`);
       if (response.status === 200) {
         const data = await response.json();
         setFarmers(data);
