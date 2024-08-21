@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { toast } from "react-toastify";
 import './CardImagesAnalized.css';
+
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
+const MAGNIFY_SIZE = 200; // Tamaño de la lupa
+const MAGNIFY_SIZE_HALF = MAGNIFY_SIZE / 2;
 
 function CardImagesAnalized() {
   const location = useLocation();
@@ -12,6 +15,7 @@ function CardImagesAnalized() {
   const [imageUrl, setImageUrl] = useState('');
   const [statusImage, setStatusImage] = useState('');
   const [isChecked, setIsChecked] = useState(false);
+  const [magnifyStyle, setMagnifyStyle] = useState({ backgroundImage: `url(${imageUrl})` });
 
   const handleOnChange = () => {
     setIsChecked(prevChecked =>!prevChecked);
@@ -38,9 +42,9 @@ function CardImagesAnalized() {
             const status = fImage.find(state => state.id_analizedImage === idAnalizedImage)?.status;
 
             setImageUrl(image);
-            setStatusImage(status)
-            
-            // Actualizar isChecked según el estado de la imagen
+            setStatusImage(status);
+            setMagnifyStyle({ backgroundImage: `url(${image})` });
+
             if (status === 'Tratada') {
               setIsChecked(true);
             } else {
@@ -61,7 +65,7 @@ function CardImagesAnalized() {
         }
       } catch (error) {
         console.error("Error al obtener las recomendaciones y acciones de la plaga o enfermedad:", error);
-        setIsLoaded(true); // Asegurando que setIsLoaded se actualice incluso en caso de error.
+        setIsLoaded(true);
       }
     };
 
@@ -70,6 +74,26 @@ function CardImagesAnalized() {
     }
 
   }, [idAnalizedImage, idBed]);
+
+  const handleMouseMove = (e) => {
+    const { offsetX, offsetY, target } = e.nativeEvent;
+    const { offsetWidth, offsetHeight } = target;
+
+    const xPercentage = (offsetX / offsetWidth) * 100;
+    const yPercentage = (offsetY / offsetHeight) * 100;
+
+    setMagnifyStyle((prev) => ({
+      ...prev,
+      display: 'block',
+      top: `${offsetY - MAGNIFY_SIZE_HALF}px`,
+      left: `${offsetX - MAGNIFY_SIZE_HALF}px`,
+      backgroundPosition: `${xPercentage}% ${yPercentage}%`,
+    }));
+  };
+
+  const handleMouseLeave = () => {
+    setMagnifyStyle((prev) => ({ ...prev, display: 'none' }));
+  };
 
   const updateStatus = (newStatus) => {
     fetch(`${backendUrl}/analizedImage/${idAnalizedImage}`, {
@@ -98,7 +122,6 @@ function CardImagesAnalized() {
       });
   };
 
-
   return (
     <div>
       <h1 className='title'>Imágenes detectadas</h1>
@@ -116,8 +139,9 @@ function CardImagesAnalized() {
       <div className="projcard-container">
         {isLoaded? (
           <div className="image-detail-container">
-            <div className="image-container">
+            <div className="image-container" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
               <img src={imageUrl} alt="Imagen detectada" />
+              <div className="magnify" style={magnifyStyle}></div>
             </div>
             <div className="details-container">
               {data.map((item, index) => (
@@ -140,7 +164,7 @@ function CardImagesAnalized() {
             </div>
           </div>
         ) : (
-          <div className="loading">Cargando imágen...</div>
+          <div className="loading">Cargando imagen...</div>
         )}
       </div>
     </div>

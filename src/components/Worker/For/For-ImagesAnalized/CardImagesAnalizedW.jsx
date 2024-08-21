@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { toast } from "react-toastify";
 import './CardImagesAnalizedW.css';
+
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
+const MAGNIFY_SIZE = 200; // Tamaño de la lupa
+const MAGNIFY_SIZE_HALF = MAGNIFY_SIZE / 2;
 
 function CardImagesAnalizedW () {
   const location = useLocation();
@@ -12,6 +15,7 @@ function CardImagesAnalizedW () {
   const [imageUrl, setImageUrl] = useState('');
   const [statusImage, setStatusImage] = useState('');
   const [isChecked, setIsChecked] = useState(false);
+  const [magnifyStyle, setMagnifyStyle] = useState({ backgroundImage: `url(${imageUrl})` });
 
   const handleOnChange = () => {
     setIsChecked(prevChecked =>!prevChecked);
@@ -38,7 +42,8 @@ function CardImagesAnalizedW () {
             const status = fImage.find(state => state.id_analizedImage === idAnalizedImage)?.status;
 
             setImageUrl(image);
-            setStatusImage(status)
+            setStatusImage(status);
+            setMagnifyStyle({ backgroundImage: `url(${image})` });
             
             // Actualizar isChecked según el estado de la imagen
             if (status === 'Tratada') {
@@ -70,6 +75,26 @@ function CardImagesAnalizedW () {
     }
 
   }, [idAnalizedImage, idBed]);
+
+  const handleMouseMove = (e) => {
+    const { offsetX, offsetY, target } = e.nativeEvent;
+    const { offsetWidth, offsetHeight } = target;
+
+    const xPercentage = (offsetX / offsetWidth) * 100;
+    const yPercentage = (offsetY / offsetHeight) * 100;
+
+    setMagnifyStyle((prev) => ({
+      ...prev,
+      display: 'block',
+      top: `${offsetY - MAGNIFY_SIZE_HALF}px`,
+      left: `${offsetX - MAGNIFY_SIZE_HALF}px`,
+      backgroundPosition: `${xPercentage}% ${yPercentage}%`,
+    }));
+  };
+
+  const handleMouseLeave = () => {
+    setMagnifyStyle((prev) => ({ ...prev, display: 'none' }));
+  };
 
   const updateStatus = (newStatus) => {
     fetch(`${backendUrl}/analizedImage/${idAnalizedImage}`, {
@@ -116,8 +141,9 @@ function CardImagesAnalizedW () {
       <div className="projcard-container">
         {isLoaded? (
           <div className="image-detail-container">
-            <div className="image-container">
+            <div className="image-container" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
               <img src={imageUrl} alt="Imagen detectada" />
+              <div className="magnify" style={magnifyStyle}></div>
             </div>
             <div className="details-container">
               {data.map((item, index) => (
