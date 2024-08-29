@@ -6,15 +6,30 @@ const ComboBoxGreenHouse = ({ onChange }) => {
   const [greenhouses, setGreenhouses] = useState([]);
   const [selectedGreenhouse, setSelectedGreenhouse] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch data from the endpoint
-    fetch(`${backendUrl}/greenhouse`)
-      .then(response => response.json())
-      .then(data => {
-        setGreenhouses(data);
-      })
-      .catch(error => console.error('Error al cargar los invernaderos:', error));
+    const fetchGreenhouses = async () => {
+      try {
+        const response = await fetch(`${backendUrl}/greenhouse`);
+        if (!response.ok) {
+          throw new Error('Aún no hay invernaderos registrados.');
+        }
+        const data = await response.json();
+        if (data.message === "Aún no hay invernaderos registrados.") {
+          setError("Aún no hay invernaderos registrados.");
+          setGreenhouses([]);
+        } else {
+          setGreenhouses(data);
+          setError(null);
+        }
+      } catch (error) {
+        console.error("Error al cargar los invernaderos:", error);
+        setError("Hubo un error al cargar los invernaderos.");
+      }
+    };
+
+    fetchGreenhouses();
   }, []);
 
   const handleOptionClick = (greenhouse) => {
@@ -27,10 +42,10 @@ const ComboBoxGreenHouse = ({ onChange }) => {
     <div className="dropdown">
       <div
         className="dropdown-btn-greenhouse"
-        style={selectedGreenhouse ? { backgroundColor: '#EFF6FF' } : null}
+        style={selectedGreenhouse ? { backgroundColor: "#EFF6FF" } : null}
         onClick={() => setIsActive(!isActive)}
       >
-        {selectedGreenhouse || "Invernaderos"}
+        {selectedGreenhouse || (error ? "Sin invernaderos" : "Invernaderos")}
       </div>
       {isActive && (
         <div className="dropdown-content-greenhouse">

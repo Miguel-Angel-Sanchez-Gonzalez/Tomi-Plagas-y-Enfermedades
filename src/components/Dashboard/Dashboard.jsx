@@ -36,6 +36,28 @@ const Dashboard = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [status, setStatus] = useState("LineChart");
   const [typeGraphic, setTypeGraphic] = useState("Líneas");
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchGreenhouses = async () => {
+      try {
+        const response = await fetch(`${backendUrl}/greenhouse`);
+        if (!response.ok) {
+          throw new Error("Aún no tiene invernaderos registrados.");
+        }
+        const data = await response.json();
+        if (data.message === "Aún no tiene invernaderos registrados.") {
+          setError("Aún no tiene invernaderos registrados.");
+        } else {
+          setError(null);
+        }
+      } catch (error) {
+        setError("Aún no tiene invernaderos registrados.");
+      }
+    };
+
+    fetchGreenhouses();
+  }, []);
 
   const addCommasToNumber = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -114,9 +136,7 @@ const Dashboard = () => {
       });
 
     // Fetch Obtiene el conteo de plagas
-    fetch(
-      `${backendUrl}/dashboard/getCountPlagues/${selectedGreenhouseId}`
-    )
+    fetch(`${backendUrl}/dashboard/getCountPlagues/${selectedGreenhouseId}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.message) {
@@ -136,9 +156,7 @@ const Dashboard = () => {
       });
 
     // Fetch Obtiene el conteo de enfermedades
-    fetch(
-      `${backendUrl}/dashboard/getCountDiseases/${selectedGreenhouseId}`
-    )
+    fetch(`${backendUrl}/dashboard/getCountDiseases/${selectedGreenhouseId}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.message) {
@@ -281,146 +299,161 @@ const Dashboard = () => {
 
   return (
     <div className="main-div bg-gray-100">
-      {/* Filtros */}
-      <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 mb-3">
-        <span className="switch-label2">Seleccione invernadero</span>
-        <ComboBoxGreenHouse onChange={handleSelectionChange} />
-        <span className="switch-label2">Seleccione una fecha</span>
-        <DatePicker
-          className="md:mt-4"
-          maxDate={new Date()}
-          onValueChange={handleDateChange}
-        />
-        <span className="switch-label2">Cambiar gráfico</span>
-        <GraphicSwitch onChange={handleStatusChange} />
-        <Button
-          variant="secondary"
-          icon={RiQuestionnaireFill}
-          onClick={() => setIsOpen(true)}
-        >
-          Ayuda
-        </Button>
-        <Dialog open={isOpen} onClose={() => setIsOpen(false)} static={true}>
-          <DialogPanel>
-            <h3 className="text-lg font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
-              Ayuda para el Usuario
-            </h3>
-            <p className="mt-2 leading-6 text-tremor-default text-tremor-content dark:text-dark-tremor-content">
-              <strong>Seleccione Invernadero:</strong> Use la lista desplegable
-              para elegir el invernadero que desea analizar. Al seleccionar un
-              invernadero, los gráficos y datos se actualizarán para mostrar la
-              información correspondiente a ese invernadero.
-            </p>
-            <p className="mt-2 leading-6 text-tremor-default text-tremor-content dark:text-dark-tremor-content">
-              <strong>Seleccione una Fecha:</strong> Utilice el calendario para
-              elegir una fecha. Puede seleccionar una fecha en el pasado para
-              ver las plagas y enfermedades detectadas desde esa fecha hasta el
-              día actual. Las fechas futuras no están disponibles para la
-              selección.
-            </p>
-            <p className="mt-2 leading-6 text-tremor-default text-tremor-content dark:text-dark-tremor-content">
-              <strong>Cambiar Tipo de Gráfico:</strong> Use el interruptor
-              para cambiar el tipo de gráfico del historial de
-              detecciones. Por defecto, se muestra un gráfico de líneas, pero
-              puede cambiarlo a un gráfico de barras según su preferencia. Esta
-              opción le permite ver el dashboard de la manera que más le agrade.
-            </p>
-            <Button className="mt-8 w-full" onClick={() => setIsOpen(false)}>
-              ¡Entendido!
-            </Button>
-          </DialogPanel>
-        </Dialog>
-      </div>
-
-      {selectedGreenhouseId ? (
-        <>
-          {/* Fila 1 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
-            <Section>
-              <CardMetric title="Total de Plagas" value={numPlagas} />
-            </Section>
-
-            <Section>
-              <CardMetric
-                title="Total de Enfermedades"
-                value={numEnfermedades}
-              />
-            </Section>
-
-            <Card className="mx-auto max-w-sm">
-              <h5 className="mb-2">Estado de las Amenazas</h5>
-              <p className="text-tremor-default text-tremor-content dark:text-dark-tremor-content flex items-center justify-between">
-                <span> {porcentajeTratadas.toFixed(1)}% Tratado</span>
-                <span>{porcentajeSinVer.toFixed(1)}% Sin ver</span>
-              </p>
-              <ProgressBar
-                value={porcentajeTratadas}
-                color="teal"
-                className="mt-3"
-              />
-            </Card>
-          </div>
-
-          {/* Fila 2 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-8">
-            <Section>
-              <CardDonut
-                title={`Plagas en el ${selectedGreenhouseName}`}
-                data={plagasData}
-                valueFormatter={addCommasToNumber}
-                variant="pie"
-              />
-            </Section>
-
-            <Section>
-              <CardDonut
-                title={`Enfermedades en el ${selectedGreenhouseName}`}
-                data={enfermedadesData}
-                valueFormatter={addCommasToNumber}
-              />
-            </Section>
-          </div>
-
-          {/* Fila 3 */}
-
-          <div className="center-pane">
-            <Card>
-              <Title>Historial de Detecciones</Title>
-              {noDataMessage ? (
-                <Text>{noDataMessage}</Text>
-              ) : (
-                <>
-                  {status === "LineChart" && (
-                    <LineChart
-                      data={chartData}
-                      index="date"
-                      categories={["Plagas", "Enfermedades"]}
-                      colors={["violet", "cyan"]}
-                      valueFormatter={dataFormatter}
-                      yAxisWidth={40}
-                      className="custom-linechart"
-                    />
-                  )}
-                  {status === "BarChart" && (
-                    <BarChart
-                      data={chartData}
-                      index="date"
-                      categories={["Plagas", "Enfermedades"]}
-                      colors={["violet", "cyan"]}
-                      valueFormatter={dataFormatter}
-                      yAxisWidth={40}
-                      className="custom-barchart"
-                    />
-                  )}
-                </>
-              )}
-            </Card>
-          </div>
-        </>
+      {error ? (
+        <p>{error}</p>
       ) : (
-        <Text className="text-lg-medium text-center mt-8">
-          Por favor, seleccione un invernadero para ver los datos.
-        </Text>
+        <>
+          {/* Filtros */}
+          <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 mb-3">
+            <span className="switch-label2">Seleccione invernadero</span>
+            <ComboBoxGreenHouse onChange={handleSelectionChange} />
+            <span className="switch-label2">Seleccione una fecha</span>
+            <DatePicker
+              className="md:mt-4"
+              maxDate={new Date()}
+              onValueChange={handleDateChange}
+            />
+            <span className="switch-label2">Cambiar gráfico</span>
+            <GraphicSwitch onChange={handleStatusChange} />
+            <Button
+              variant="secondary"
+              icon={RiQuestionnaireFill}
+              onClick={() => setIsOpen(true)}
+            >
+              Ayuda
+            </Button>
+            <Dialog
+              open={isOpen}
+              onClose={() => setIsOpen(false)}
+              static={true}
+            >
+              <DialogPanel>
+                <h3 className="text-lg font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
+                  Ayuda para el Usuario
+                </h3>
+                <p className="mt-2 leading-6 text-tremor-default text-tremor-content dark:text-dark-tremor-content">
+                  <strong>Seleccione Invernadero:</strong> Use la lista
+                  desplegable para elegir el invernadero que desea analizar. Al
+                  seleccionar un invernadero, los gráficos y datos se
+                  actualizarán para mostrar la información correspondiente a ese
+                  invernadero.
+                </p>
+                <p className="mt-2 leading-6 text-tremor-default text-tremor-content dark:text-dark-tremor-content">
+                  <strong>Seleccione una Fecha:</strong> Utilice el calendario
+                  para elegir una fecha. Puede seleccionar una fecha en el
+                  pasado para ver las plagas y enfermedades detectadas desde esa
+                  fecha hasta el día actual. Las fechas futuras no están
+                  disponibles para la selección.
+                </p>
+                <p className="mt-2 leading-6 text-tremor-default text-tremor-content dark:text-dark-tremor-content">
+                  <strong>Cambiar Tipo de Gráfico:</strong> Use el interruptor
+                  para cambiar el tipo de gráfico del historial de detecciones.
+                  Por defecto, se muestra un gráfico de líneas, pero puede
+                  cambiarlo a un gráfico de barras según su preferencia. Esta
+                  opción le permite ver el dashboard de la manera que más le
+                  agrade.
+                </p>
+                <Button
+                  className="mt-8 w-full"
+                  onClick={() => setIsOpen(false)}
+                >
+                  ¡Entendido!
+                </Button>
+              </DialogPanel>
+            </Dialog>
+          </div>
+
+          {selectedGreenhouseId ? (
+            <>
+              {/* Fila 1 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
+                <Section>
+                  <CardMetric title="Total de Plagas" value={numPlagas} />
+                </Section>
+
+                <Section>
+                  <CardMetric
+                    title="Total de Enfermedades"
+                    value={numEnfermedades}
+                  />
+                </Section>
+
+                <Card className="mx-auto max-w-sm">
+                  <h5 className="mb-2">Estado de las Amenazas</h5>
+                  <p className="text-tremor-default text-tremor-content dark:text-dark-tremor-content flex items-center justify-between">
+                    <span> {porcentajeTratadas.toFixed(1)}% Tratado</span>
+                    <span>{porcentajeSinVer.toFixed(1)}% Sin ver</span>
+                  </p>
+                  <ProgressBar
+                    value={porcentajeTratadas}
+                    color="teal"
+                    className="mt-3"
+                  />
+                </Card>
+              </div>
+
+              {/* Fila 2 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-8">
+                <Section>
+                  <CardDonut
+                    title={`Plagas en el ${selectedGreenhouseName}`}
+                    data={plagasData}
+                    valueFormatter={addCommasToNumber}
+                    variant="pie"
+                  />
+                </Section>
+
+                <Section>
+                  <CardDonut
+                    title={`Enfermedades en el ${selectedGreenhouseName}`}
+                    data={enfermedadesData}
+                    valueFormatter={addCommasToNumber}
+                  />
+                </Section>
+              </div>
+
+              {/* Fila 3 */}
+
+              <div className="center-pane">
+                <Card>
+                  <Title>Historial de Detecciones</Title>
+                  {noDataMessage ? (
+                    <Text>{noDataMessage}</Text>
+                  ) : (
+                    <>
+                      {status === "LineChart" && (
+                        <LineChart
+                          data={chartData}
+                          index="date"
+                          categories={["Plagas", "Enfermedades"]}
+                          colors={["violet", "cyan"]}
+                          valueFormatter={dataFormatter}
+                          yAxisWidth={40}
+                          className="custom-linechart"
+                        />
+                      )}
+                      {status === "BarChart" && (
+                        <BarChart
+                          data={chartData}
+                          index="date"
+                          categories={["Plagas", "Enfermedades"]}
+                          colors={["violet", "cyan"]}
+                          valueFormatter={dataFormatter}
+                          yAxisWidth={40}
+                          className="custom-barchart"
+                        />
+                      )}
+                    </>
+                  )}
+                </Card>
+              </div>
+            </>
+          ) : (
+            <Text className="text-lg-medium text-center mt-8">
+              Por favor, seleccione un invernadero para ver los datos.
+            </Text>
+          )}
+        </>
       )}
     </div>
   );
